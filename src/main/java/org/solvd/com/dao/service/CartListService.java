@@ -3,7 +3,6 @@ package org.solvd.com.dao.service;
 import org.solvd.com.dao.Exception.DAOException;
 import org.solvd.com.dao.model.CartList;
 import org.solvd.com.dao.utils.GenericDAO;
-
 import java.util.List;
 
 public class CartListService implements Service<CartList, Integer> {

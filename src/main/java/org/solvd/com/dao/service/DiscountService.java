@@ -3,7 +3,6 @@ package org.solvd.com.dao.service;
 import org.solvd.com.dao.Exception.DAOException;
 import org.solvd.com.dao.model.Discounts;
 import org.solvd.com.dao.utils.GenericDAO;
-
 import java.util.List;
 
 public class DiscountService implements Service<Discounts, Integer> {

@@ -3,7 +3,6 @@ package org.solvd.com.dao.model;
 import org.solvd.com.dao.Exception.DAOException;
 import org.solvd.com.dao.service.*;
 import org.solvd.com.dao.utils.ConnectionFactory;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 

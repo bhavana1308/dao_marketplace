@@ -2,7 +2,6 @@ package org.solvd.com.dao.model;
 
 public class Products {
 
-
     private int productId;
     private String productName;
     private double price;

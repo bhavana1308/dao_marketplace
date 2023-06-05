@@ -4,7 +4,6 @@ import org.solvd.com.dao.Exception.DAOException;
 import org.solvd.com.dao.model.Discounts;
 import org.solvd.com.dao.utils.AbstractDAO;
 import org.solvd.com.dao.utils.ConnectionFactory;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +79,6 @@ public class DiscountsDAO extends AbstractDAO<Discounts, Integer> {
         return discounts;
     }
 
-
     public Discounts getRandomDiscount() throws DAOException {
         Discounts discounts = new Discounts();
         try (Connection connection = ConnectionFactory.getConnection();
@@ -98,7 +96,6 @@ public class DiscountsDAO extends AbstractDAO<Discounts, Integer> {
         }
         return discounts;
     }
-
 
     public Discounts insertQuery(Discounts discounts) throws DAOException {
         String createQuery = getCreateQuery(discounts);

@@ -4,7 +4,6 @@ import org.solvd.com.dao.Exception.DAOException;
 import org.solvd.com.dao.model.CartList;
 import org.solvd.com.dao.utils.AbstractDAO;
 import org.solvd.com.dao.utils.ConnectionFactory;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

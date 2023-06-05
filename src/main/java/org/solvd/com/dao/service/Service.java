@@ -1,7 +1,6 @@
 package org.solvd.com.dao.service;
 
 import org.solvd.com.dao.Exception.DAOException;
-
 import java.sql.SQLException;
 import java.util.List;
 
