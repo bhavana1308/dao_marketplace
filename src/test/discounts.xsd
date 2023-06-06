@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+    <xs:element name="discounts" type="discountsType"/>
+    <xs:complexType name="discountsType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="discountId"/>
+            <xs:element type="xs:string" name="discountName"/>
+            <xs:element type="xs:string" name="description"/>
+            <xs:element type="xs:string" name="discountPercent"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

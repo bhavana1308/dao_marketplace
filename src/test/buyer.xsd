@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+    <xs:element name="buyer" type="buyerType"/>
+    <xs:complexType name="buyerType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="email"/>
+            <xs:element type="xs:string" name="fName"/>
+            <xs:element type="xs:string" name="lName"/>
+            <xs:element type="xs:string" name="password"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

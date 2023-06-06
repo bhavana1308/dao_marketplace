@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+    <xs:element name="products" type="productsType"/>
+    <xs:complexType name="productsType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="productId"/>
+            <xs:element type="xs:string" name="productName"/>
+            <xs:element type="xs:string" name="price"/>
+            <xs:element type="xs:string" name="rating"/>
+            <xs:element type="xs:string" name="reviewCount"/>
+            <xs:element type="xs:string" name="description"/>
+            <xs:element type="xs:string" name="quantityAvailable"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

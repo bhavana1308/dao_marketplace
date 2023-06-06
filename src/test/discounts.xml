@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discounts>
+    <discountId>1</discountId>
+    <discountName>Christmas day sale</discountName>
+    <description>Additional Discount for Electronics, Hurry up and grab the deal</description>
+    <discountPercent>25</discountPercent>
+</discounts>

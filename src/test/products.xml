@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+    <productId>1</productId>
+    <productName>Shirts</productName>
+    <price>10.96</price>
+    <rating>5</rating>
+    <reviewCount>200</reviewCount>
+    <description>product listing</description>
+    <quantityAvailable>10</quantityAvailable>
+</products>

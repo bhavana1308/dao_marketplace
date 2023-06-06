@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+    <xs:element name="cartList" type="cartListType"/>
+    <xs:complexType name="cartListType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="cartId"/>
+            <xs:element type="xs:string" name="buyerId"/>
+            <xs:element type="xs:string" name="productId"/>
+            <xs:element type="xs:string" name="quantity"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
