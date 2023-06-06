@@ -1,14 +1,15 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.exception.DAOException;
+import org.solvd.com.dao.exception.DaoException;
 import org.solvd.com.dao.model.Buyer;
-import org.solvd.com.dao.utils.AbstractDAO;
+import org.solvd.com.dao.utils.AbstractDao;
 import org.solvd.com.dao.utils.ConnectionFactory;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuyerDAO extends AbstractDAO<Buyer, Integer> {
+public class BuyerDao extends AbstractDao<Buyer, Integer> {
 
     @Override
     protected String getCreateQuery(Buyer buyer) {
@@ -41,15 +42,15 @@ public class BuyerDAO extends AbstractDAO<Buyer, Integer> {
     }
 
     @Override
-    protected void setIdStatement(PreparedStatement statement, Integer buyerId) throws DAOException {
+    protected void setIdStatement(PreparedStatement statement, Integer buyerId) throws DaoException {
         try {
             statement.setInt(1, buyerId);
         } catch (SQLException e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
     }
 
-    protected void setObjectStatement(PreparedStatement statement, Buyer buyer) throws DAOException {
+    protected void setObjectStatement(PreparedStatement statement, Buyer buyer) throws DaoException {
         try {
             if (buyer.getBuyerId() != 0) {
                 statement.setString(1, buyer.getEmail());
@@ -63,12 +64,12 @@ public class BuyerDAO extends AbstractDAO<Buyer, Integer> {
                 statement.setString(4, buyer.getPassword());
             }
         } catch (SQLException e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
     }
 
     @Override
-    protected Buyer readObject(ResultSet resultSet) throws DAOException {
+    protected Buyer readObject(ResultSet resultSet) throws DaoException {
         Buyer buyer = new Buyer();
         try {
             buyer.setBuyerId(resultSet.getInt("buyerId"));
@@ -77,13 +78,13 @@ public class BuyerDAO extends AbstractDAO<Buyer, Integer> {
             buyer.setLastName(resultSet.getString("lName"));
             buyer.setPassword(resultSet.getString("password"));
         } catch (SQLException e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return buyer;
     }
 
 
-    public Buyer getRandomBuyer() throws DAOException {
+    public Buyer getRandomBuyer() throws DaoException {
         Buyer buyer = new Buyer();
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
@@ -92,16 +93,16 @@ public class BuyerDAO extends AbstractDAO<Buyer, Integer> {
             if (resultSet.next()) {
                 buyer = readObject(resultSet);
             } else {
-                throw new DAOException("No buyer entry was found!");
+                throw new DaoException("No buyer entry was found!");
             }
 
         } catch (Exception e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return buyer;
     }
 
-    public List<Buyer> getAll() throws DAOException {
+    public List<Buyer> getAll() throws DaoException {
         List<Buyer> buyer = new ArrayList<>();
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
@@ -117,14 +118,14 @@ public class BuyerDAO extends AbstractDAO<Buyer, Integer> {
                 buyer.add(buyer1);
             }
         } catch (Exception e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return buyer;
 
     }
 
 
-    public Buyer insertQuery(Buyer buyer) throws DAOException {
+    public Buyer insertQuery(Buyer buyer) throws DaoException {
         String createQuery = getCreateQuery(buyer);
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(createQuery)) {
@@ -134,12 +135,12 @@ public class BuyerDAO extends AbstractDAO<Buyer, Integer> {
             statement.setString(4, buyer.getPassword());
             statement.executeUpdate();
         } catch (Exception e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return buyer;
     }
 
-    public Buyer updateQuery(Buyer buyer) throws DAOException {
+    public Buyer updateQuery(Buyer buyer) throws DaoException {
         String updateQuery = getUpdateQuery();
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(updateQuery)) {
@@ -150,12 +151,12 @@ public class BuyerDAO extends AbstractDAO<Buyer, Integer> {
             statement.setString(5, buyer.getPassword());
             statement.executeUpdate();
         } catch (Exception e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return buyer;
     }
 
-    public Buyer deleteQuery(Buyer buyer) throws DAOException {
+    public Buyer deleteQuery(Buyer buyer) throws DaoException {
         String deleteQuery = getDeleteQuery();
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(deleteQuery)) {
@@ -164,7 +165,7 @@ public class BuyerDAO extends AbstractDAO<Buyer, Integer> {
             statement.executeUpdate();
             statement.execute("SET FOREIGN_KEY_CHECKS=1");
         } catch (Exception e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return buyer;
     }

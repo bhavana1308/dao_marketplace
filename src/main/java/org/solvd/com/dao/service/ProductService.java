@@ -1,15 +1,16 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.exception.DAOException;
+import org.solvd.com.dao.exception.DaoException;
 import org.solvd.com.dao.model.Products;
-import org.solvd.com.dao.utils.GenericDAO;
+import org.solvd.com.dao.utils.GenericDao;
+
 import java.util.List;
 
 public class ProductService implements Service<Products, Integer> {
 
-    private final GenericDAO<Products, Integer> productsDao;
+    private final GenericDao<Products, Integer> productsDao;
 
-    public ProductService(GenericDAO<Products, Integer> productsDao) {
+    public ProductService(GenericDao<Products, Integer> productsDao) {
         this.productsDao = productsDao;
     }
 
@@ -19,22 +20,22 @@ public class ProductService implements Service<Products, Integer> {
     }
 
     @Override
-    public Products read(Integer id) throws DAOException {
+    public Products read(Integer id) throws DaoException {
         return productsDao.read(id);
     }
 
     @Override
-    public void update(Products entity) throws DAOException {
+    public void update(Products entity) throws DaoException {
         productsDao.update(entity);
     }
 
     @Override
-    public List<Products> getAll(Products entity) throws DAOException {
+    public List<Products> getAll(Products entity) throws DaoException {
         return productsDao.getAll(entity);
     }
 
     @Override
-    public void delete(Products entity) throws DAOException {
+    public void delete(Products entity) throws DaoException {
         productsDao.delete(entity);
     }
 }
