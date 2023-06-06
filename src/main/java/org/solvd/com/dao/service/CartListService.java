@@ -1,15 +1,15 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.exception.DaoException;
+import org.solvd.com.dao.exception.DAOException;
 import org.solvd.com.dao.model.CartList;
-import org.solvd.com.dao.utils.GenericDao;
+import org.solvd.com.dao.utils.GenericDAO;
 import java.util.List;
 
 public class CartListService implements Service<CartList, Integer> {
 
-    private final GenericDao<CartList, Integer> cartListDao;
+    private final GenericDAO<CartList, Integer> cartListDao;
 
-    public CartListService(GenericDao<CartList, Integer> cartListDao) {
+    public CartListService(GenericDAO<CartList, Integer> cartListDao) {
         this.cartListDao = cartListDao;
     }
 
@@ -19,22 +19,22 @@ public class CartListService implements Service<CartList, Integer> {
     }
 
     @Override
-    public CartList read(Integer id) throws DaoException {
+    public CartList read(Integer id) throws DAOException {
         return cartListDao.read(id);
     }
 
     @Override
-    public void update(CartList entity) throws DaoException {
+    public void update(CartList entity) throws DAOException {
         cartListDao.update(entity);
     }
 
     @Override
-    public List<CartList> getAll(CartList entity) throws DaoException {
+    public List<CartList> getAll(CartList entity) throws DAOException {
         return cartListDao.getAll(entity);
     }
 
     @Override
-    public void delete(CartList entity) throws DaoException {
+    public void delete(CartList entity) throws DAOException {
         cartListDao.delete(entity);
     }
 }

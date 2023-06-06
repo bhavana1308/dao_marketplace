@@ -1,10 +1,11 @@
-package org.solvd.com.dao.service;
+package org.solvd.com.dao.utils;
 
 import org.solvd.com.dao.exception.DAOException;
+
 import java.sql.SQLException;
 import java.util.List;
 
-public interface Service<P, K> {
+public interface GenericDAO<P, K> {
 
     boolean create(P object) throws DAOException, SQLException;
 
@@ -16,3 +17,4 @@ public interface Service<P, K> {
 
     void delete(P object) throws DAOException;
 }
+

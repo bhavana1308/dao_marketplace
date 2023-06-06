@@ -1,14 +1,14 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.exception.DaoException;
+import org.solvd.com.dao.exception.DAOException;
 import org.solvd.com.dao.model.CartList;
-import org.solvd.com.dao.utils.AbstractDao;
+import org.solvd.com.dao.utils.AbstractDAO;
 import org.solvd.com.dao.utils.ConnectionFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartListDao extends AbstractDao<CartList, Integer> {
+public class CartListDAO extends AbstractDAO<CartList, Integer> {
 
     @Override
     protected String getCreateQuery(CartList cartList) {
@@ -41,16 +41,16 @@ public class CartListDao extends AbstractDao<CartList, Integer> {
     }
 
     @Override
-    protected void setIdStatement(PreparedStatement statement, Integer cartId) throws DaoException {
+    protected void setIdStatement(PreparedStatement statement, Integer cartId) throws DAOException {
         try {
             statement.setInt(1, cartId);
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
     }
 
     @Override
-    protected void setObjectStatement(PreparedStatement statement, CartList cartList) throws DaoException {
+    protected void setObjectStatement(PreparedStatement statement, CartList cartList) throws DAOException {
         try {
             if (cartList.getCartId() != 0) {
                 statement.setInt(1, cartList.getCartId());
@@ -64,12 +64,12 @@ public class CartListDao extends AbstractDao<CartList, Integer> {
                 statement.setInt(4, cartList.getQuantity());
             }
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
     }
 
     @Override
-    protected CartList readObject(ResultSet resultSet) throws DaoException {
+    protected CartList readObject(ResultSet resultSet) throws DAOException {
         CartList cartList = new CartList();
         try {
             cartList.setCartId(resultSet.getInt("cartId"));
@@ -77,12 +77,12 @@ public class CartListDao extends AbstractDao<CartList, Integer> {
             cartList.setProductId(resultSet.getInt("productId"));
             cartList.setQuantity(resultSet.getInt("quantity"));
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return cartList;
     }
 
-    public CartList read(int buyerId, int productId) throws DaoException {
+    public CartList read(int buyerId, int productId) throws DAOException {
         String query = "SELECT * FROM CartList WHERE buyerId = " + buyerId +
                 " AND productId = " + productId;
         CartList cartList = new CartList();
@@ -93,12 +93,12 @@ public class CartListDao extends AbstractDao<CartList, Integer> {
                 cartList = readObject(resultSet);
             }
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return cartList;
     }
 
-    public List<CartList> findByCartId(Integer cartId) throws DaoException {
+    public List<CartList> findByCartId(Integer cartId) throws DAOException {
         List<CartList> cartList = new ArrayList<>();
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
@@ -111,7 +111,7 @@ public class CartListDao extends AbstractDao<CartList, Integer> {
                 cartList.add(new CartList(cartId, buyerId, productId, quantity));
             }
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return cartList;
     }

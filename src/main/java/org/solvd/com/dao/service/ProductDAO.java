@@ -1,15 +1,15 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.exception.DaoException;
+import org.solvd.com.dao.exception.DAOException;
 import org.solvd.com.dao.model.Products;
-import org.solvd.com.dao.utils.AbstractDao;
+import org.solvd.com.dao.utils.AbstractDAO;
 import org.solvd.com.dao.utils.ConnectionFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDao extends AbstractDao<Products, Integer> {
+public class ProductDAO extends AbstractDAO<Products, Integer> {
 
     @Override
     protected String getCreateQuery(Products products) {
@@ -46,16 +46,16 @@ public class ProductDao extends AbstractDao<Products, Integer> {
     }
 
     @Override
-    protected void setIdStatement(PreparedStatement statement, Integer productId) throws DaoException {
+    protected void setIdStatement(PreparedStatement statement, Integer productId) throws DAOException {
         try {
             statement.setInt(1, productId);
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
     }
 
     @Override
-    protected void setObjectStatement(PreparedStatement statement, Products products) throws DaoException {
+    protected void setObjectStatement(PreparedStatement statement, Products products) throws DAOException {
         try {
             if (products.getProductId() != 0) {
                 statement.setString(1, products.getProductName());
@@ -69,12 +69,12 @@ public class ProductDao extends AbstractDao<Products, Integer> {
                 statement.setString(1, products.getProductName());
             }
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
     }
 
     @Override
-    protected Products readObject(ResultSet resultSet) throws DaoException {
+    protected Products readObject(ResultSet resultSet) throws DAOException {
         Products products = new Products();
         try {
             products.setProductId(resultSet.getInt("productId"));
@@ -85,12 +85,12 @@ public class ProductDao extends AbstractDao<Products, Integer> {
             products.setDescription(resultSet.getString("description"));
             products.setQuantityAvailable(resultSet.getInt("quantityAvailable"));
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return products;
     }
 
-    public Products findByName(String productName) throws DaoException {
+    public Products findByName(String productName) throws DAOException {
         Products products;
         String selectByNameQuery = getSelectByNameQuery();
         try (Connection connection = ConnectionFactory.getConnection();
@@ -100,15 +100,15 @@ public class ProductDao extends AbstractDao<Products, Integer> {
             if (resultSet.next()) {
                 products = readObject(resultSet);
             } else {
-                throw new DaoException("Couldn't find a product with such ID!");
+                throw new DAOException("Couldn't find a product with such ID!");
             }
         } catch (Exception e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return products;
     }
 
-    public List<Products> getAll() throws DaoException {
+    public List<Products> getAll() throws DAOException {
         List<Products> products = new ArrayList<>();
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
@@ -126,12 +126,12 @@ public class ProductDao extends AbstractDao<Products, Integer> {
                 products.add(products1);
             }
         } catch (Exception e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return products;
     }
 
-    public Products deleteQuery(Products products) throws DaoException {
+    public Products deleteQuery(Products products) throws DAOException {
         String deleteQuery = getDeleteQuery();
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(deleteQuery)) {
@@ -140,7 +140,7 @@ public class ProductDao extends AbstractDao<Products, Integer> {
             statement.executeUpdate();
             statement.execute("SET FOREIGN_KEY_CHECKS=1");
         } catch (Exception e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return products;
     }

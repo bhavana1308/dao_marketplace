@@ -1,6 +1,6 @@
 package org.solvd.com.dao.model;
 
-import org.solvd.com.dao.exception.DaoException;
+import org.solvd.com.dao.exception.DAOException;
 import org.solvd.com.dao.service.*;
 import org.solvd.com.dao.utils.ConnectionFactory;
 import java.sql.Connection;
@@ -13,14 +13,14 @@ public class Executor {
         System.out.println("-------------Information about online marketplace----------");
     }
 
-    public static void main(String[] args) throws DaoException, SQLException {
+    public static void main(String[] args) throws DAOException, SQLException {
         Connection con = ConnectionFactory.getConnection();
 
         if (con != null) {
             System.out.println("Database connection successful!");
         }
         System.out.println("-------------BUYER----------");
-        BuyerDao buyer = new BuyerDao();
+        BuyerDAO buyer = new BuyerDAO();
         System.out.println("Number of records in buyer table = " + buyer.countEntities());
         System.out.println("------------- LIST OF BUYERS----------");
         buyer.getAll().forEach(t -> System.out.println(t));
@@ -43,7 +43,7 @@ public class Executor {
         System.out.println("------------- LIST OF BUYERS----------");
         buyer.getAll().forEach(t -> System.out.println(t));
         System.out.println("-------------PRODUCTS----------");
-        ProductDao products = new ProductDao();
+        ProductDAO products = new ProductDAO();
         System.out.println("-------------FIND BY PRODUCT NAME----------");
         System.out.println(products.findByName("Shirts"));
         System.out.println("------------- LIST OF PRODUCTS----------");
@@ -56,7 +56,7 @@ public class Executor {
         products.getAll().forEach(t -> System.out.println(t));
 
         System.out.println("-------------DISCOUNTS----------");
-        DiscountsDao discounts = new DiscountsDao();
+        DiscountsDAO discounts = new DiscountsDAO();
         System.out.println("Random discount = " + discounts.getRandomDiscount());
         System.out.println("------------- INSERT DISCOUNTS----------");
         Discounts discounts1 = new Discounts(1, "Christmas Day Sale", "Additional Discount for Electronics, Hurry up and grab the deal", 20);
@@ -72,12 +72,12 @@ public class Executor {
         discounts.getAll().forEach(t -> System.out.println(t));
 
         System.out.println("-------------CART LIST----------");
-        CartListDao cartList = new CartListDao();
+        CartListDAO cartList = new CartListDAO();
         System.out.println("-------------FIND BY CART ID----------");
         System.out.println(cartList.findByCartId(1));
 
         System.out.println("-------------CATEGORY----------");
-        CategoryDao category = new CategoryDao();
+        CategoryDAO category = new CategoryDAO();
         System.out.println("------------- RANDOM CATEGORY----------");
         System.out.println("Random category = " + category.getRandomCategory());
         System.out.println("------------- INSERT CATEGORY----------");

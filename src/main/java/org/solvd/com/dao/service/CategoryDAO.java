@@ -1,14 +1,14 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.exception.DaoException;
+import org.solvd.com.dao.exception.DAOException;
 import org.solvd.com.dao.model.Category;
-import org.solvd.com.dao.utils.AbstractDao;
+import org.solvd.com.dao.utils.AbstractDAO;
 import org.solvd.com.dao.utils.ConnectionFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryDao extends AbstractDao<Category, Integer> {
+public class CategoryDAO extends AbstractDAO<Category, Integer> {
 
     @Override
     protected String getCreateQuery(Category category) {
@@ -41,15 +41,15 @@ public class CategoryDao extends AbstractDao<Category, Integer> {
     }
 
     @Override
-    protected void setIdStatement(PreparedStatement statement, Integer categoryId) throws DaoException {
+    protected void setIdStatement(PreparedStatement statement, Integer categoryId) throws DAOException {
         try {
             statement.setInt(1, categoryId);
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
     }
 
-    protected void setObjectStatement(PreparedStatement statement, Category category) throws DaoException {
+    protected void setObjectStatement(PreparedStatement statement, Category category) throws DAOException {
         try {
             if (category.getCategoryId() != 0) {
                 statement.setString(1, category.getCategoryName());
@@ -59,25 +59,25 @@ public class CategoryDao extends AbstractDao<Category, Integer> {
                 statement.setString(2, category.getDescription());
             }
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
     }
 
     @Override
-    protected Category readObject(ResultSet resultSet) throws DaoException {
+    protected Category readObject(ResultSet resultSet) throws DAOException {
         Category category = new Category();
         try {
             category.setCategoryId(resultSet.getInt("categoryId"));
             category.setCategoryName(resultSet.getString("categoryName"));
             category.setDescription(resultSet.getString("description"));
         } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return category;
     }
 
 
-    public Category getRandomCategory() throws DaoException {
+    public Category getRandomCategory() throws DAOException {
         Category category;
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
@@ -86,16 +86,16 @@ public class CategoryDao extends AbstractDao<Category, Integer> {
             if (resultSet.next()) {
                 category = readObject(resultSet);
             } else {
-                throw new DaoException("No category entry was found!");
+                throw new DAOException("No category entry was found!");
             }
 
         } catch (Exception e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return category;
     }
 
-    public Category insertQuery(Category category) throws DaoException {
+    public Category insertQuery(Category category) throws DAOException {
         String createQuery = getCreateQuery(category);
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(createQuery)) {
@@ -103,12 +103,12 @@ public class CategoryDao extends AbstractDao<Category, Integer> {
             statement.setString(2, category.getDescription());
             statement.executeUpdate();
         } catch (Exception e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return category;
     }
 
-    public Category updateQuery(Category category) throws DaoException {
+    public Category updateQuery(Category category) throws DAOException {
         String updateQuery = getUpdateQuery();
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(updateQuery)) {
@@ -117,12 +117,12 @@ public class CategoryDao extends AbstractDao<Category, Integer> {
             statement.setString(3, category.getDescription());
             statement.executeUpdate();
         } catch (Exception e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return category;
     }
 
-    public List<Category> getAll() throws DaoException {
+    public List<Category> getAll() throws DAOException {
         List<Category> category = new ArrayList<>();
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
@@ -136,7 +136,7 @@ public class CategoryDao extends AbstractDao<Category, Integer> {
                 category.add(category1);
             }
         } catch (Exception e) {
-            throw new DaoException(e.getMessage());
+            throw new DAOException(e.getMessage());
         }
         return category;
     }
