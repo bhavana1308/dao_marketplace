@@ -1,6 +1,6 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.Exception.DAOException;
+import org.solvd.com.dao.exception.DAOException;
 import org.solvd.com.dao.model.CartList;
 import org.solvd.com.dao.utils.AbstractDAO;
 import org.solvd.com.dao.utils.ConnectionFactory;

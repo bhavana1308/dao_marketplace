@@ -1,6 +1,6 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.Exception.DAOException;
+import org.solvd.com.dao.exception.DAOException;
 import org.solvd.com.dao.model.Category;
 import org.solvd.com.dao.utils.GenericDAO;
 import java.util.List;
