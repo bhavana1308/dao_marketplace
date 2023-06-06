@@ -1,14 +1,14 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.exception.DAOException;
+import org.solvd.com.dao.exception.DaoException;
 import org.solvd.com.dao.model.Discounts;
-import org.solvd.com.dao.utils.AbstractDAO;
+import org.solvd.com.dao.utils.AbstractDao;
 import org.solvd.com.dao.utils.ConnectionFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiscountsDAO extends AbstractDAO<Discounts, Integer> {
+public class DiscountsDao extends AbstractDao<Discounts, Integer> {
 
     @Override
     protected String getCreateQuery(Discounts discounts) {
@@ -41,15 +41,15 @@ public class DiscountsDAO extends AbstractDAO<Discounts, Integer> {
     }
 
     @Override
-    protected void setIdStatement(PreparedStatement statement, Integer discountId) throws DAOException {
+    protected void setIdStatement(PreparedStatement statement, Integer discountId) throws DaoException {
         try {
             statement.setInt(1, discountId);
         } catch (SQLException e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
     }
 
-    protected void setObjectStatement(PreparedStatement statement, Discounts discounts) throws DAOException {
+    protected void setObjectStatement(PreparedStatement statement, Discounts discounts) throws DaoException {
         try {
             if (discounts.getDiscountId() != 0) {
                 statement.setString(1, discounts.getDiscountName());
@@ -61,12 +61,12 @@ public class DiscountsDAO extends AbstractDAO<Discounts, Integer> {
                 statement.setInt(3, discounts.getDiscountPercent());
             }
         } catch (SQLException e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
     }
 
     @Override
-    protected Discounts readObject(ResultSet resultSet) throws DAOException {
+    protected Discounts readObject(ResultSet resultSet) throws DaoException {
         Discounts discounts = new Discounts();
         try {
             discounts.setDiscountId(resultSet.getInt("discountId"));
@@ -74,12 +74,12 @@ public class DiscountsDAO extends AbstractDAO<Discounts, Integer> {
             discounts.setDescription(resultSet.getString("description"));
             discounts.setDiscountPercent(resultSet.getInt("discountPercent"));
         } catch (SQLException e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return discounts;
     }
 
-    public Discounts getRandomDiscount() throws DAOException {
+    public Discounts getRandomDiscount() throws DaoException {
         Discounts discounts = new Discounts();
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
@@ -88,16 +88,16 @@ public class DiscountsDAO extends AbstractDAO<Discounts, Integer> {
             if (resultSet.next()) {
                 discounts = readObject(resultSet);
             } else {
-                throw new DAOException("No discounts entry was found!");
+                throw new DaoException("No discounts entry was found!");
             }
 
         } catch (Exception e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return discounts;
     }
 
-    public Discounts insertQuery(Discounts discounts) throws DAOException {
+    public Discounts insertQuery(Discounts discounts) throws DaoException {
         String createQuery = getCreateQuery(discounts);
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(createQuery)) {
@@ -106,12 +106,12 @@ public class DiscountsDAO extends AbstractDAO<Discounts, Integer> {
             statement.setInt(3, discounts.getDiscountPercent());
             statement.executeUpdate();
         } catch (Exception e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return discounts;
     }
 
-    public Discounts updateQuery(Discounts discounts) throws DAOException {
+    public Discounts updateQuery(Discounts discounts) throws DaoException {
         String updateQuery = getUpdateQuery();
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(updateQuery)) {
@@ -121,12 +121,12 @@ public class DiscountsDAO extends AbstractDAO<Discounts, Integer> {
             statement.setInt(4, discounts.getDiscountPercent());
             statement.executeUpdate();
         } catch (Exception e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return discounts;
     }
 
-    public List<Discounts> getAll() throws DAOException {
+    public List<Discounts> getAll() throws DaoException {
         List<Discounts> discounts = new ArrayList<>();
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
@@ -141,12 +141,12 @@ public class DiscountsDAO extends AbstractDAO<Discounts, Integer> {
                 discounts.add(discounts1);
             }
         } catch (Exception e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return discounts;
     }
 
-    public Discounts deleteQuery(Discounts discounts) throws DAOException {
+    public Discounts deleteQuery(Discounts discounts) throws DaoException {
         String deleteQuery = getDeleteQuery();
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(deleteQuery)) {
@@ -155,7 +155,7 @@ public class DiscountsDAO extends AbstractDAO<Discounts, Integer> {
             statement.executeUpdate();
             statement.execute("SET FOREIGN_KEY_CHECKS=1");
         } catch (Exception e) {
-            throw new DAOException(e.getMessage());
+            throw new DaoException(e.getMessage());
         }
         return discounts;
     }

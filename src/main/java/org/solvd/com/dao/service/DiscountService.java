@@ -1,15 +1,15 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.exception.DAOException;
+import org.solvd.com.dao.exception.DaoException;
 import org.solvd.com.dao.model.Discounts;
-import org.solvd.com.dao.utils.GenericDAO;
+import org.solvd.com.dao.utils.GenericDao;
 import java.util.List;
 
 public class DiscountService implements Service<Discounts, Integer> {
 
-    private final GenericDAO<Discounts, Integer> discountsDao;
+    private final GenericDao<Discounts, Integer> discountsDao;
 
-    public DiscountService(GenericDAO<Discounts, Integer> discountsDao) {
+    public DiscountService(GenericDao<Discounts, Integer> discountsDao) {
         this.discountsDao = discountsDao;
     }
 
@@ -19,22 +19,22 @@ public class DiscountService implements Service<Discounts, Integer> {
     }
 
     @Override
-    public Discounts read(Integer id) throws DAOException {
+    public Discounts read(Integer id) throws DaoException {
         return discountsDao.read(id);
     }
 
     @Override
-    public void update(Discounts entity) throws DAOException {
+    public void update(Discounts entity) throws DaoException {
         discountsDao.update(entity);
     }
 
     @Override
-    public List<Discounts> getAll(Discounts entity) throws DAOException {
+    public List<Discounts> getAll(Discounts entity) throws DaoException {
         return discountsDao.getAll(entity);
     }
 
     @Override
-    public void delete(Discounts entity) throws DAOException {
+    public void delete(Discounts entity) throws DaoException {
         discountsDao.delete(entity);
     }
 }
