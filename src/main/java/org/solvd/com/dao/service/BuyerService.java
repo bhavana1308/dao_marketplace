@@ -24,8 +24,8 @@ public class BuyerService implements Service<Buyer> {
     }
 
     @Override
-    public void update(Buyer entity) {
-        buyerDao.update(entity);
+    public Buyer update(Buyer entity) {
+        return buyerDao.update(entity);
     }
 
     @Override

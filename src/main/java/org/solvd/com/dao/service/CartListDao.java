@@ -10,15 +10,15 @@ import java.util.List;
 
 public class CartListDao extends AbstractDao<CartList> {
 
-    private final String SELECT_BY_CART_ID = "SELECT * FROM CartList WHERE cartId = " + "cartId ;";
+    private final String SELECT_BY_QUANTITY = "SELECT * FROM CartList WHERE cartId =" + "cartId ;";
 
     private final String DELETE_QUERY = " DELETE FROM CartList WHERE cartId = ? ;";
 
     public CartList findById(int cartId) {
-        CartList cartList = new CartList();
+        CartList cartList = null;
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery(SELECT_BY_CART_ID);
+            ResultSet resultSet = statement.executeQuery(SELECT_BY_QUANTITY);
             if (resultSet.next()) {
                 cartList = getCartListFromResultSet(resultSet);
             } else {
@@ -46,12 +46,9 @@ public class CartListDao extends AbstractDao<CartList> {
     private CartList getCartListFromResultSet(ResultSet resultSet) throws SQLException {
         CartList cartList = new CartList();
         cartList.setCartId(resultSet.getInt("cartId"));
-        cartList.setBuyerId(resultSet.getInt("buyerId"));
-        cartList.setProductId(resultSet.getInt("productId"));
         cartList.setQuantity(resultSet.getInt("quantity"));
         return cartList;
     }
-
 
     @Override
     public List<CartList> getAll() {
@@ -64,7 +61,8 @@ public class CartListDao extends AbstractDao<CartList> {
     }
 
     @Override
-    public void update(CartList entity) {
+    public CartList update(CartList entity) {
+        return entity;
 
     }
 

@@ -49,7 +49,7 @@ public class CategoryDao extends AbstractDao<Category> {
 
     }
 
-    public void update(Category category) {
+    public Category update(Category category) {
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)) {
             statement.setInt(1, category.getCategoryId());
@@ -60,7 +60,7 @@ public class CategoryDao extends AbstractDao<Category> {
             e.printStackTrace();
 
         }
-
+        return category;
     }
 
     @Override

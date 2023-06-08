@@ -18,19 +18,15 @@ public class ProductDao extends AbstractDao<Products> {
     private final String GET_ALL_QUERY = "SELECT * FROM products";
 
 
-    private Products getProductsFromResultSet(ResultSet resultSet) throws DaoException {
+    private Products getProductsFromResultSet(ResultSet resultSet) throws SQLException {
         Products products = new Products();
-        try {
-            products.setProductId(resultSet.getInt("productId"));
-            products.setProductName(resultSet.getString("productName"));
-            products.setPrice(resultSet.getDouble("price"));
-            products.setRating(resultSet.getInt("rating"));
-            products.setReviewCount(resultSet.getInt("reviewCount"));
-            products.setDescription(resultSet.getString("description"));
-            products.setQuantityAvailable(resultSet.getInt("quantityAvailable"));
-        } catch (SQLException e) {
-            throw new DaoException(e.getMessage());
-        }
+        products.setProductId(resultSet.getInt("productId"));
+        products.setProductName(resultSet.getString("productName"));
+        products.setPrice(resultSet.getDouble("price"));
+        products.setRating(resultSet.getInt("rating"));
+        products.setReviewCount(resultSet.getInt("reviewCount"));
+        products.setDescription(resultSet.getString("description"));
+        products.setQuantityAvailable(resultSet.getInt("quantityAvailable"));
         return products;
     }
 
@@ -77,8 +73,8 @@ public class ProductDao extends AbstractDao<Products> {
     }
 
     @Override
-    public void update(Products entity) {
-
+    public Products update(Products entity) {
+        return entity;
     }
 
     public void delete(Products products) {

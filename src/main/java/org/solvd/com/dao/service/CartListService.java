@@ -24,8 +24,8 @@ public class CartListService implements Service<CartList> {
     }
 
     @Override
-    public void update(CartList entity) {
-        cartListDao.update(entity);
+    public CartList update(CartList entity) {
+        return cartListDao.update(entity);
     }
 
     @Override

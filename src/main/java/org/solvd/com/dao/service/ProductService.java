@@ -19,8 +19,8 @@ public class ProductService implements Service<Products> {
     }
 
     @Override
-    public void update(Products entity) {
-        productsDao.update(entity);
+    public Products update(Products entity) {
+        return productsDao.update(entity);
     }
 
     @Override

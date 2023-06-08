@@ -13,7 +13,7 @@ public class DiscountsDao extends AbstractDao<Discounts> {
 
     private final String INSERT_QUERY = "INSERT INTO discounts (discountName,description,discountPercent) VALUES (?,?,?);";
 
-    private final String UPDATE_QUERY = "UPDATE discounts SET discountName=?,description=?,discountPercent=? WHERE discountId = ?;";
+    private final String UPDATE_QUERY = "UPDATE discounts SET discountName=?, description=?, discountPercent=? WHERE discountId = ?;";
 
     private final String GET_RANDOM_QUERY = "SELECT * FROM discounts LIMIT 1;";
 
@@ -31,7 +31,7 @@ public class DiscountsDao extends AbstractDao<Discounts> {
         return discounts;
     }
 
-    public Discounts getRandomDiscount() throws DaoException {
+    public Discounts getRandomDiscount() {
         Discounts discounts = null;
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
@@ -57,10 +57,9 @@ public class DiscountsDao extends AbstractDao<Discounts> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
-    public void update(Discounts discounts) {
+    public Discounts update(Discounts discounts) {
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)) {
             statement.setInt(1, discounts.getDiscountId());
@@ -71,7 +70,7 @@ public class DiscountsDao extends AbstractDao<Discounts> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return discounts;
     }
 
     @Override

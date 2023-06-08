@@ -25,8 +25,8 @@ public class DiscountService implements Service<Discounts> {
 
 
     @Override
-    public void update(Discounts entity) {
-        discountsDao.update(entity);
+    public Discounts update(Discounts entity) {
+        return discountsDao.update(entity);
     }
 
     @Override
