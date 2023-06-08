@@ -14,7 +14,7 @@ public class Executor {
         System.out.println("-------------Information about online marketplace----------");
     }
 
-    public static void main(String[] args) throws DaoException, SQLException {
+    public static void main(String[] args) throws SQLException {
         Connection con = ConnectionFactory.getConnection();
 
         if (con != null) {
