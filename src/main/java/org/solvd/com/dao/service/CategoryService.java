@@ -1,41 +1,40 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.exception.DaoException;
 import org.solvd.com.dao.model.Category;
 import org.solvd.com.dao.utils.GenericDao;
 
 import java.util.List;
 
-public class CategoryService implements Service<Category, Integer> {
+public class CategoryService implements Service<Category> {
 
-    private final GenericDao<Category, Integer> categoryDao;
+    private final GenericDao<Category> categoryDao;
 
-    public CategoryService(GenericDao<Category, Integer> categoryDao) {
+    public CategoryService(GenericDao<Category> categoryDao) {
         this.categoryDao = categoryDao;
     }
 
     @Override
-    public boolean create(Category object) {
-        return false;
+    public Category findById(int id) {
+        return categoryDao.findById(id);
     }
 
     @Override
-    public Category read(Integer id) throws DaoException {
-        return categoryDao.read(id);
+    public void insert(Category entity) {
+        categoryDao.insert(entity);
     }
 
     @Override
-    public void update(Category entity) throws DaoException {
+    public void update(Category entity) {
         categoryDao.update(entity);
     }
 
     @Override
-    public List<Category> getAll(Category entity) throws DaoException {
-        return categoryDao.getAll(entity);
+    public List<Category> getAll() {
+        return categoryDao.getAll();
     }
 
     @Override
-    public void delete(Category entity) throws DaoException {
+    public void delete(Category entity) {
         categoryDao.delete(entity);
     }
 }

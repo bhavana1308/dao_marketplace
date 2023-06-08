@@ -1,41 +1,40 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.exception.DaoException;
 import org.solvd.com.dao.model.Buyer;
 import org.solvd.com.dao.utils.GenericDao;
 
 import java.util.List;
 
-public class BuyerService implements Service<Buyer, Integer> {
+public class BuyerService implements Service<Buyer> {
 
-    private final GenericDao<Buyer, Integer> buyerDao;
+    private final GenericDao<Buyer> buyerDao;
 
-    public BuyerService(GenericDao<Buyer, Integer> buyerDao) {
+    public BuyerService(GenericDao<Buyer> buyerDao) {
         this.buyerDao = buyerDao;
     }
 
     @Override
-    public boolean create(Buyer object) {
-        return false;
+    public Buyer findById(int id) {
+        return buyerDao.findById(id);
     }
 
     @Override
-    public Buyer read(Integer id) throws DaoException {
-        return buyerDao.read(id);
+    public void insert(Buyer entity) {
+        buyerDao.insert(entity);
     }
 
     @Override
-    public void update(Buyer entity) throws DaoException {
+    public void update(Buyer entity) {
         buyerDao.update(entity);
     }
 
     @Override
-    public List<Buyer> getAll(Buyer entity) throws DaoException {
-        return buyerDao.getAll(entity);
+    public List<Buyer> getAll() {
+        return buyerDao.getAll();
     }
 
     @Override
-    public void delete(Buyer entity) throws DaoException {
+    public void delete(Buyer entity) {
         buyerDao.delete(entity);
     }
 

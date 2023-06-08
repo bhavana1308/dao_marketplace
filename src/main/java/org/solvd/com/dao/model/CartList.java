@@ -18,6 +18,10 @@ public class CartList {
 
     }
 
+    public CartList(int cartId) {
+        this.cartId = cartId;
+    }
+
     public int getCartId() {
         return cartId;
     }

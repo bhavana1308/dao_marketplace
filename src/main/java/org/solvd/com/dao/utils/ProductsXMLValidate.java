@@ -19,7 +19,7 @@ public class ProductsXMLValidate {
         }
     }
 
-    private static boolean validateXMLSchema (String xmlFilePath){
+    private static boolean validateXMLSchema(String xmlFilePath) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setNamespaceAware(true);
@@ -37,17 +37,17 @@ public class ProductsXMLValidate {
 
     }
 
-    private static void parseXMLWithDOM (String xmlFilePath){
+    private static void parseXMLWithDOM(String xmlFilePath) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(xmlFilePath);
 
-            String productId= document.getElementsByTagName("productId").item(0).getTextContent();
+            String productId = document.getElementsByTagName("productId").item(0).getTextContent();
             System.out.println("Product Id: " + productId);
             String productName = document.getElementsByTagName("productName").item(0).getTextContent();
             System.out.println("Product Name: " + productName);
-            String price= document.getElementsByTagName("price").item(0).getTextContent();
+            String price = document.getElementsByTagName("price").item(0).getTextContent();
             System.out.println("Price " + price);
             String rating = document.getElementsByTagName("rating").item(0).getTextContent();
             System.out.println("Product Rating: " + rating);
@@ -55,7 +55,7 @@ public class ProductsXMLValidate {
             System.out.println("Review Count: " + reviewCount);
             String description = document.getElementsByTagName("description").item(0).getTextContent();
             System.out.println("Description : " + description);
-            String quantityAvailable= document.getElementsByTagName("quantityAvailable").item(0).getTextContent();
+            String quantityAvailable = document.getElementsByTagName("quantityAvailable").item(0).getTextContent();
             System.out.println("Quantity Available: " + quantityAvailable);
 
         } catch (Exception e) {

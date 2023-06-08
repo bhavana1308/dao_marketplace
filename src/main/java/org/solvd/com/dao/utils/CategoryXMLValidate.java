@@ -19,7 +19,7 @@ public class CategoryXMLValidate {
         }
     }
 
-    private static boolean validateXMLSchema (String xmlFilePath){
+    private static boolean validateXMLSchema(String xmlFilePath) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setNamespaceAware(true);
@@ -37,13 +37,13 @@ public class CategoryXMLValidate {
 
     }
 
-    private static void parseXMLWithDOM (String xmlFilePath){
+    private static void parseXMLWithDOM(String xmlFilePath) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(xmlFilePath);
 
-            String categoryId= document.getElementsByTagName("categoryId").item(0).getTextContent();
+            String categoryId = document.getElementsByTagName("categoryId").item(0).getTextContent();
             System.out.println("Category Id: " + categoryId);
             String categoryName = document.getElementsByTagName("categoryName").item(0).getTextContent();
             System.out.println("Category Name: " + categoryName);

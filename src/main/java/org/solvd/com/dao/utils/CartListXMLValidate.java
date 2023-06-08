@@ -19,7 +19,7 @@ public class CartListXMLValidate {
         }
     }
 
-    private static boolean validateXMLSchema (String xmlFilePath){
+    private static boolean validateXMLSchema(String xmlFilePath) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setNamespaceAware(true);
@@ -37,7 +37,7 @@ public class CartListXMLValidate {
 
     }
 
-    private static void parseXMLWithDOM (String xmlFilePath){
+    private static void parseXMLWithDOM(String xmlFilePath) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -46,7 +46,7 @@ public class CartListXMLValidate {
             String cartId = document.getElementsByTagName("cartId").item(0).getTextContent();
             System.out.println("Cart Id: " + cartId);
             String buyerId = document.getElementsByTagName("buyerId").item(0).getTextContent();
-            System.out.println("Buyer Id : " +buyerId);
+            System.out.println("Buyer Id : " + buyerId);
             String productId = document.getElementsByTagName("productId").item(0).getTextContent();
             System.out.println("Product Id : " + productId);
             String quantity = document.getElementsByTagName("quantity").item(0).getTextContent();

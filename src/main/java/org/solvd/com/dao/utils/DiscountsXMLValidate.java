@@ -19,7 +19,7 @@ public class DiscountsXMLValidate {
         }
     }
 
-    private static boolean validateXMLSchema (String xmlFilePath){
+    private static boolean validateXMLSchema(String xmlFilePath) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setNamespaceAware(true);
@@ -37,7 +37,7 @@ public class DiscountsXMLValidate {
 
     }
 
-    private static void parseXMLWithDOM (String xmlFilePath){
+    private static void parseXMLWithDOM(String xmlFilePath) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();

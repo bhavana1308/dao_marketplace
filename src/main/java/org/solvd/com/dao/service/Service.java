@@ -1,19 +1,18 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.exception.DaoException;
-
-import java.sql.SQLException;
 import java.util.List;
 
-public interface Service<P, K> {
+public interface Service<T> {
 
-    boolean create(P object) throws DaoException, SQLException;
+    T findById(int id);
 
-    P read(K id) throws DaoException;
+    List<T> getAll();
 
-    void update(P object) throws DaoException;
+    void insert(T entity);
 
-    List<P> getAll(P object) throws DaoException;
+    void update(T entity);
 
-    void delete(P object) throws DaoException;
+    void delete(T entity);
+
+
 }
