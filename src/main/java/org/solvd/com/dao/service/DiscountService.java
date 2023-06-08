@@ -23,7 +23,6 @@ public class DiscountService implements Service<Discounts> {
         return discountsDao.findById(id);
     }
 
-
     @Override
     public Discounts update(Discounts entity) {
         return discountsDao.update(entity);
