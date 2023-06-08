@@ -1,6 +1,5 @@
 package org.solvd.com.dao.model;
 
-import org.solvd.com.dao.exception.DaoException;
 import org.solvd.com.dao.service.*;
 import org.solvd.com.dao.utils.ConnectionFactory;
 
