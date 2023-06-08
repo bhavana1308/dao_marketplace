@@ -10,15 +10,15 @@ import java.util.List;
 
 public class CartListDao extends AbstractDao<CartList> {
 
-    private final String SELECT_BY_QUANTITY = "SELECT * FROM CartList WHERE cartId =" + "cartId ;";
+    private final String SELECT_BY_ID= "SELECT * FROM CartList WHERE cartId = cartId ;" ;
 
     private final String DELETE_QUERY = " DELETE FROM CartList WHERE cartId = ? ;";
 
     public CartList findById(int cartId) {
-        CartList cartList = null;
+        CartList cartList = new CartList();
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery(SELECT_BY_QUANTITY);
+            ResultSet resultSet = statement.executeQuery(SELECT_BY_ID);
             if (resultSet.next()) {
                 cartList = getCartListFromResultSet(resultSet);
             } else {
