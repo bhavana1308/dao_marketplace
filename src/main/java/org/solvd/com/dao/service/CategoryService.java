@@ -19,8 +19,8 @@ public class CategoryService implements Service<Category> {
     }
 
     @Override
-    public void insert(Category entity) {
-        categoryDao.insert(entity);
+    public Category insert(Category entity) {
+        return categoryDao.insert(entity);
     }
 
     @Override

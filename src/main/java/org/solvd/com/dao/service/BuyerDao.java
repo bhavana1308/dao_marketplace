@@ -18,13 +18,22 @@ public class BuyerDao extends AbstractDao<Buyer> {
 
     private final String GET_ALL_QUERY = "SELECT * FROM buyer";
 
+    private Buyer getBuyerFromResultSet(ResultSet resultSet) throws SQLException {
+        Buyer buyer = new Buyer();
+        buyer.setBuyerId(resultSet.getInt("buyerId"));
+        buyer.setEmail(resultSet.getString("email"));
+        buyer.setFirstName(resultSet.getString("fName"));
+        buyer.setLastName(resultSet.getString("lName"));
+        buyer.setPassword(resultSet.getString("password"));
+        return buyer;
+    }
 
     @Override
     public Buyer findById(int id) {
         return null;
     }
 
-    public void insert(Buyer buyer) {
+    public Buyer insert(Buyer buyer) {
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(INSERT_QUERY)) {
             statement.setString(1, buyer.getEmail());
@@ -35,17 +44,17 @@ public class BuyerDao extends AbstractDao<Buyer> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return buyer;
     }
 
     public Buyer update(Buyer buyer) {
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)) {
-            statement.setInt(1, buyer.getBuyerId());
-            statement.setString(2, buyer.getEmail());
-            statement.setString(3, buyer.getFirstName());
-            statement.setString(4, buyer.getLastName());
-            statement.setString(5, buyer.getPassword());
+            statement.setString(1, buyer.getEmail());
+            statement.setString(2, buyer.getFirstName());
+            statement.setString(3, buyer.getLastName());
+            statement.setString(4, buyer.getPassword());
+            statement.setInt(5, buyer.getBuyerId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -71,23 +80,12 @@ public class BuyerDao extends AbstractDao<Buyer> {
              Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(GET_ALL_QUERY);
             while (resultSet.next()) {
-                Buyer buyer1 = getBuyerFromResultSet(resultSet);
-                buyers.add(buyer1);
+                Buyer buyer = getBuyerFromResultSet(resultSet);
+                buyers.add(buyer);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return buyers;
-    }
-
-
-    private Buyer getBuyerFromResultSet(ResultSet resultSet) throws SQLException {
-        Buyer buyer = new Buyer();
-        buyer.setBuyerId(resultSet.getInt("buyerId"));
-        buyer.setEmail(resultSet.getString("email"));
-        buyer.setFirstName(resultSet.getString("fName"));
-        buyer.setLastName(resultSet.getString("lName"));
-        buyer.setPassword(resultSet.getString("password"));
-        return buyer;
     }
 }

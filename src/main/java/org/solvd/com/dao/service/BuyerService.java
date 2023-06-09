@@ -19,8 +19,8 @@ public class BuyerService implements Service<Buyer> {
     }
 
     @Override
-    public void insert(Buyer entity) {
-        buyerDao.insert(entity);
+    public Buyer insert(Buyer entity) {
+        return buyerDao.insert(entity);
     }
 
     @Override

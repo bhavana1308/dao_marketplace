@@ -14,8 +14,8 @@ public class DiscountService implements Service<Discounts> {
     }
 
     @Override
-    public void insert(Discounts entity) {
-        discountsDao.insert(entity);
+    public Discounts insert(Discounts entity) {
+        return discountsDao.insert(entity);
     }
 
     @Override

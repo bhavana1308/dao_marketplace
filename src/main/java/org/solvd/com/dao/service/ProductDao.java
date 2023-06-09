@@ -68,8 +68,8 @@ public class ProductDao extends AbstractDao<Products> {
     }
 
     @Override
-    public void insert(Products entity) {
-
+    public Products insert(Products entity) {
+        return entity;
     }
 
     @Override
@@ -84,9 +84,8 @@ public class ProductDao extends AbstractDao<Products> {
             statement.execute("SET FOREIGN_KEY_CHECKS=0");
             statement.executeUpdate();
             statement.execute("SET FOREIGN_KEY_CHECKS=1");
-        } catch (Exception e) {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
     }
 }

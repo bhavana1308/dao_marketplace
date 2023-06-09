@@ -19,8 +19,8 @@ public class CartListService implements Service<CartList> {
     }
 
     @Override
-    public void insert(CartList entity) {
-        cartListDao.insert(entity);
+    public CartList insert(CartList entity) {
+        return cartListDao.insert(entity);
     }
 
     @Override

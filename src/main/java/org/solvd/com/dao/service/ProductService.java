@@ -14,8 +14,8 @@ public class ProductService implements Service<Products> {
     }
 
     @Override
-    public void insert(Products entity) {
-        productsDao.insert(entity);
+    public Products insert(Products entity) {
+        return productsDao.insert(entity);
     }
 
     @Override

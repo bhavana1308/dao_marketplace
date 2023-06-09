@@ -14,7 +14,7 @@ public class CategoryDao extends AbstractDao<Category> {
 
     private final String INSERT_QUERY = "INSERT INTO category (categoryName,description) VALUES (?,?);";
 
-    private final String UPDATE_QUERY = "UPDATE category SET categoryId=?,description=? WHERE categoryName= ?;";
+    private final String UPDATE_QUERY = "UPDATE category SET categoryName=?,description=? WHERE categoryId= ?;";
 
     private final String GET_ALL_QUERY = "SELECT * FROM category";
 
@@ -37,7 +37,7 @@ public class CategoryDao extends AbstractDao<Category> {
         return category;
     }
 
-    public void insert(Category category) {
+    public Category insert(Category category) {
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(INSERT_QUERY)) {
             statement.setString(1, category.getCategoryName());
@@ -46,15 +46,15 @@ public class CategoryDao extends AbstractDao<Category> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return category;
     }
 
     public Category update(Category category) {
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)) {
-            statement.setInt(1, category.getCategoryId());
-            statement.setString(2, category.getCategoryName());
-            statement.setString(3, category.getDescription());
+            statement.setString(1, category.getCategoryName());
+            statement.setString(2, category.getDescription());
+            statement.setInt(3, category.getCategoryId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -97,7 +97,6 @@ public class CategoryDao extends AbstractDao<Category> {
 
         return category;
     }
-
 
 }
 

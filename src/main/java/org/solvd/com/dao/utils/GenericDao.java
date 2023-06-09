@@ -8,7 +8,7 @@ public interface GenericDao<T> {
 
     List<T> getAll();
 
-    void insert(T entity);
+    T insert(T entity);
 
     T update(T entity);
 

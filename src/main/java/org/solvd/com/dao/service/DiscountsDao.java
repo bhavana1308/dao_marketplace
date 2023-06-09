@@ -47,7 +47,7 @@ public class DiscountsDao extends AbstractDao<Discounts> {
         return discounts;
     }
 
-    public void insert(Discounts discounts) {
+    public Discounts insert(Discounts discounts) {
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(INSERT_QUERY)) {
             statement.setString(1, discounts.getDiscountName());
@@ -57,15 +57,16 @@ public class DiscountsDao extends AbstractDao<Discounts> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return discounts;
     }
 
     public Discounts update(Discounts discounts) {
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_QUERY)) {
-            statement.setInt(1, discounts.getDiscountId());
-            statement.setString(2, discounts.getDiscountName());
-            statement.setString(3, discounts.getDescription());
-            statement.setInt(4, discounts.getDiscountPercent());
+            statement.setString(1, discounts.getDiscountName());
+            statement.setString(2, discounts.getDescription());
+            statement.setInt(3, discounts.getDiscountPercent());
+            statement.setInt(4, discounts.getDiscountId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -103,7 +104,6 @@ public class DiscountsDao extends AbstractDao<Discounts> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }
 

@@ -44,6 +44,7 @@ public class CartListDao extends AbstractDao<CartList> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
 
@@ -60,14 +61,14 @@ public class CartListDao extends AbstractDao<CartList> {
     }
 
     @Override
-    public void insert(CartList entity) {
+    public CartList insert(CartList entity) {
+        return entity;
 
     }
 
     @Override
     public CartList update(CartList entity) {
         return entity;
-
     }
 
 }
