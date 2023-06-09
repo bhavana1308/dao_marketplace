@@ -61,7 +61,7 @@ public class ProductDao extends AbstractDao<Products> {
                 Products products1 = getProductsFromResultSet(resultSet);
                 products.add(products1);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return products;
