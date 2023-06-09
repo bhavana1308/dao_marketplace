@@ -21,6 +21,8 @@ public class Executor {
         }
         System.out.println("-------------BUYER----------");
         BuyerDao buyer = new BuyerDao();
+        System.out.println("------------- LIST OF BUYERS----------");
+        buyer.getAll().forEach(t -> System.out.println(t));
         System.out.println("-------------INSERT BUYER----------");
         Buyer buyer1 = new Buyer(4, "aaa.test@gmail.com", "aaa", "Test", "Welcome123$");
         System.out.println(buyer.insert(buyer1));
@@ -28,7 +30,7 @@ public class Executor {
         Buyer buyer2 = new Buyer(3, "venny@gmail.com", "Venny", "A", "10101");
         System.out.println(buyer.update(buyer2));
         System.out.println("------------- DELETE BUYER----------");
-        Buyer buyer3 = new Buyer(4);
+        Buyer buyer3 = new Buyer(2);
         buyer.delete(buyer3);
         System.out.println("buyer id " + buyer3.getBuyerId() + " deleted ");
         System.out.println("------------- LIST OF BUYERS----------");
@@ -50,7 +52,8 @@ public class Executor {
         System.out.println("-------------DISCOUNTS----------");
         DiscountsDao discounts = new DiscountsDao();
         System.out.println("Random discount = " + discounts.getRandomDiscount());
-        Discounts discounts1 = new Discounts(1, "Christmas Day Sale", "Additional Discount for Electronics, Hurry up and grab the deal", 20);
+        System.out.println("------------- INSERT DISCOUNTS---------");
+        Discounts discounts1 = new Discounts(4, "Christmas Day Sale", "Additional Discount for Electronics, Hurry up and grab the deal", 20);
         System.out.println(discounts.insert(discounts1));
         System.out.println("------------- UPDATE DISCOUNTS---------");
         Discounts discounts2 = new Discounts(2, "Independence Day Sale", "Additional Discount for Electronics, Hurry up and grab the deal", 25);
@@ -58,6 +61,7 @@ public class Executor {
         System.out.println("------------- DELETE DISCOUNTS----------");
         Discounts discounts3 = new Discounts(3);
         discounts.delete(discounts3);
+        System.out.println("Discount id " + discounts3.getDiscountId() + " deleted ");
         System.out.println("------------- LIST OF DISCOUNTS---------");
         discounts.getAll().forEach(t -> System.out.println(t));
 
@@ -65,6 +69,7 @@ public class Executor {
         System.out.println("-------------FIND BY CART ID----------");
         CartListDao cartList = new CartListDao();
         System.out.println(cartList.findById(1));
+        System.out.println("-------------DELETE CART LIST----------");
         CartList cartList1 = new CartList(2);
         cartList.delete(cartList1);
         System.out.println("cart id " + cartList1.getCartId() + " deleted ");
