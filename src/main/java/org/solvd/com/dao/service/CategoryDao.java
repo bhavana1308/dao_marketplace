@@ -94,7 +94,6 @@ public class CategoryDao extends AbstractDao<Category> {
         category.setCategoryId(resultSet.getInt("categoryId"));
         category.setCategoryName(resultSet.getString("categoryName"));
         category.setDescription(resultSet.getString("description"));
-
         return category;
     }
 

@@ -62,7 +62,6 @@ public class CartListDao extends AbstractDao<CartList> {
     @Override
     public CartList insert(CartList entity) {
         return entity;
-
     }
 
     @Override
