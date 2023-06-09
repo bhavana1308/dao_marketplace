@@ -47,7 +47,6 @@ public class CartListDao extends AbstractDao<CartList> {
 
     }
 
-
     private CartList getCartListFromResultSet(ResultSet resultSet) throws SQLException {
         CartList cartList = new CartList();
         cartList.setCartId(resultSet.getInt("cartId"));
