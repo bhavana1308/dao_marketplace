@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<discountsList>
+    <discount>
+        <discountId>4</discountId>
+        <discountName>Labour day sale</discountName>
+        <description>50 percent off on everything</description>
+        <discountPercent>50</discountPercent>
+        <createdDate>2023-06-12T14:02:48.167-05:00</createdDate>
+    </discount>
+    <discount>
+        <discountId>5</discountId>
+        <discountName>memorial day sale</discountName>
+        <description>60 percent off on crockery</description>
+        <discountPercent>60</discountPercent>
+        <createdDate>2023-06-12T14:02:48.167-05:00</createdDate>
+    </discount>
+</discountsList>

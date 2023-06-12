@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<buyers>
+    <buyer>
+        <buyerId>4</buyerId>
+        <email>apple@yahoo.com</email>
+        <fName>Gracie</fName>
+        <lName>Hailine</lName>
+        <password>123456</password>
+        <createdDate>2023-06-12T14:02:47.390-05:00</createdDate>
+    </buyer>
+    <buyer>
+        <buyerId>5</buyerId>
+        <email>Myka@yahoo.com</email>
+        <fName>Myka</fName>
+        <lName>Nyroo</lName>
+        <password>123789</password>
+        <createdDate>2023-06-12T14:02:47.390-05:00</createdDate>
+    </buyer>
+</buyers>

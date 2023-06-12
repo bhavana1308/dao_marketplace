@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<products>
+    <productId>4</productId>
+    <productName>Laptop</productName>
+    <price>20.9</price>
+    <rating>4</rating>
+    <reviewCount>200</reviewCount>
+    <description>Electronic laptop</description>
+    <quantityAvailable>20</quantityAvailable>
+    <createdDate>2023-06-12T14:02:48.187-05:00</createdDate>
+</products>

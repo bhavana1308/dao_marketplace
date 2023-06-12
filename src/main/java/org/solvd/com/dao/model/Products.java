@@ -1,14 +1,39 @@
 package org.solvd.com.dao.model;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+import java.util.Date;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Products {
 
+    @XmlElement
     private int productId;
+
+    @XmlElement
     private String productName;
+
+    @XmlElement
     private double price;
+
+    @XmlElement
     private int rating;
+
+    @XmlElement
     private int reviewCount;
+
+    @XmlElement
     private String description;
+
+    @XmlElement
     private int quantityAvailable;
+
+    @XmlElement
+    private Date createdDate;
 
     public Products(int productId, String productName, double price, int rating, int reviewCount, String description, int quantityAvailable) {
         this.productId = productId;
@@ -81,6 +106,14 @@ public class Products {
 
     public void setQuantityAvailable(int quantityAvailable) {
         this.quantityAvailable = quantityAvailable;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     @Override

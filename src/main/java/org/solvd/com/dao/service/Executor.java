@@ -1,6 +1,6 @@
-package org.solvd.com.dao.model;
+package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.service.*;
+import org.solvd.com.dao.model.*;
 import org.solvd.com.dao.utils.ConnectionFactory;
 
 import java.sql.Connection;
@@ -14,6 +14,8 @@ public class Executor {
     }
 
     public static void main(String[] args) throws SQLException {
+
+
         Connection con = ConnectionFactory.getConnection();
 
         if (con != null) {
@@ -87,7 +89,9 @@ public class Executor {
         System.out.println(category.update(category2));
         System.out.println("------------- LIST OF CATEGORY----------");
         category.getAll().forEach(t -> System.out.println(t));
-    }
 
+    }
 }
+
+
 
