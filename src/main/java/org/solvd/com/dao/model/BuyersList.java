@@ -5,6 +5,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,7 +14,7 @@ import java.util.List;
 public class BuyersList {
 
     @XmlElement(name = "buyer")
-    private List<Buyer> buyersList = null;
+    private List<Buyer> buyersList = new ArrayList<>();
 
     public List<Buyer> getBuyersList() {
         return buyersList;
