@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class JaxBMain {
+
     public static void main(String[] args) {
 
         //Buyers  marshaller included list and date.
