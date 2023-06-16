@@ -1,35 +1,13 @@
 package org.solvd.com.dao.model;
 
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
-
-import java.util.Date;
-
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Buyer {
 
-    @XmlElement
     private int buyerId;
-
-    @XmlElement
     private String email;
-
-    @XmlElement
     private String fName;
-
-    @XmlElement
     private String lName;
-
-    @XmlElement
     private String password;
-
-    @XmlElement
-    private Date createdDate;
-
 
     public Buyer(int buyerId, String email, String fName, String lName, String password) {
         this.buyerId = buyerId;
@@ -85,14 +63,6 @@ public class Buyer {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
     }
 
 
