@@ -2,10 +2,11 @@ package org.solvd.com.dao.json;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 import java.util.Date;
 
-
+@JsonRootName(value = "Discounts")
 public class Discounts {
 
     @JsonProperty("discountId")
@@ -81,11 +82,11 @@ public class Discounts {
     @Override
     public String toString() {
         return "Discounts{" +
-                "discountId=" + discountId +
-                ", discountName='" + discountName + '\'' +
-                ", description='" + description + '\'' +
-                ", discountPercent=" + discountPercent +
-                ", createdDate=" + createdDate +
+                "\n" + " discountId=" + discountId + "\n" +
+                " discountName='" + discountName + "\n" +
+                " description='" + description + "\n" +
+                " discountPercent=" + discountPercent + "\n" +
+                " createdDate=" + createdDate + "\n" +
                 '}';
     }
 }

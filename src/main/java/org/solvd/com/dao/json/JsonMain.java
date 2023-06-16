@@ -34,11 +34,12 @@ public class JsonMain {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
-            String json = objectMapper.writeValueAsString(buyers);
+            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(buyers);
             System.out.println(json);
             objectMapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
             BuyersList deserializedBuyers = objectMapper.readValue(json, BuyersList.class);
-            deserializedBuyers.getBuyersList().forEach(t -> System.out.println("Deserialized Buyers :" + t));
+            System.out.println("Deserialized Buyers :");
+            deserializedBuyers.getBuyersList().forEach(t -> System.out.println(t));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -52,7 +53,7 @@ public class JsonMain {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
-            String json = objectMapper.writeValueAsString(cartList);
+            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(cartList);
             System.out.println(json);
             objectMapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
             CartList deserializedCartList = objectMapper.readValue(json, CartList.class);
@@ -70,11 +71,11 @@ public class JsonMain {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
-            String json = objectMapper.writeValueAsString(category);
+            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(category);
             System.out.println(json);
             objectMapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
             Category deserializedCategory = objectMapper.readValue(json, Category.class);
-            System.out.println("Deserialized Category" + deserializedCategory);
+            System.out.println("Deserialized Category:" + deserializedCategory);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -101,11 +102,12 @@ public class JsonMain {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
-            String json = objectMapper.writeValueAsString(discountsList);
+            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(discountsList);
             System.out.println(json);
             objectMapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
             DiscountsList deserializedDiscountsList = objectMapper.readValue(json, DiscountsList.class);
-            deserializedDiscountsList.getDiscountsList().forEach(t -> System.out.println("Deserialized discounts list: " + t));
+            System.out.println("Deserialized discounts list: ");
+            deserializedDiscountsList.getDiscountsList().forEach(t -> System.out.println(t));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -123,7 +125,7 @@ public class JsonMain {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
-            String json = objectMapper.writeValueAsString(products);
+            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(products);
             System.out.println(json);
             objectMapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
             Products deserializedProducts = objectMapper.readValue(json, Products.class);
