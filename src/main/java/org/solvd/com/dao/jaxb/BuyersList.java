@@ -1,4 +1,4 @@
-package org.solvd.com.dao.model;
+package org.solvd.com.dao.jaxb;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
