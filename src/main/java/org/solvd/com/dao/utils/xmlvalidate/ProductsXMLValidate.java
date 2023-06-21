@@ -1,15 +1,15 @@
-package org.solvd.com.dao.utils;
+package org.solvd.com.dao.utils.xmlvalidate;
 
 import org.w3c.dom.Document;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class BuyerXMLValidate {
+public class ProductsXMLValidate {
 
     public static void main(String[] args) {
 
-        String xmlFilePath = "src/test/buyer.xml";
+        String xmlFilePath = "src/test/products.xml";
 
         boolean isValid = validateXMLSchema(xmlFilePath);
         System.out.println("XML validation result : " + isValid);
@@ -43,17 +43,24 @@ public class BuyerXMLValidate {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(xmlFilePath);
 
-            String fName = document.getElementsByTagName("fName").item(0).getTextContent();
-            System.out.println("Buyer first name : " + fName);
-            String lName = document.getElementsByTagName("lName").item(0).getTextContent();
-            System.out.println("Buyer last name : " + lName);
-            String email = document.getElementsByTagName("email").item(0).getTextContent();
-            System.out.println("Buyer email : " + email);
-            String password = document.getElementsByTagName("password").item(0).getTextContent();
-            System.out.println("Buyer password : " + password);
+            String productId = document.getElementsByTagName("productId").item(0).getTextContent();
+            System.out.println("Product Id: " + productId);
+            String productName = document.getElementsByTagName("productName").item(0).getTextContent();
+            System.out.println("Product Name: " + productName);
+            String price = document.getElementsByTagName("price").item(0).getTextContent();
+            System.out.println("Price " + price);
+            String rating = document.getElementsByTagName("rating").item(0).getTextContent();
+            System.out.println("Product Rating: " + rating);
+            String reviewCount = document.getElementsByTagName("reviewCount").item(0).getTextContent();
+            System.out.println("Review Count: " + reviewCount);
+            String description = document.getElementsByTagName("description").item(0).getTextContent();
+            System.out.println("Description : " + description);
+            String quantityAvailable = document.getElementsByTagName("quantityAvailable").item(0).getTextContent();
+            System.out.println("Quantity Available: " + quantityAvailable);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
+
