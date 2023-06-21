@@ -1,15 +1,15 @@
-package org.solvd.com.dao.utils.xmlvalidate;
+package org.solvd.com.dao.utils;
 
 import org.w3c.dom.Document;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class CartListXMLValidate {
+public class DiscountsXMLValidate {
 
     public static void main(String[] args) {
 
-        String xmlFilePath = "src/test/cartList.xml";
+        String xmlFilePath = "src/test/discounts.xml";
 
         boolean isValid = validateXMLSchema(xmlFilePath);
         System.out.println("XML validation result : " + isValid);
@@ -43,18 +43,17 @@ public class CartListXMLValidate {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(xmlFilePath);
 
-            String cartId = document.getElementsByTagName("cartId").item(0).getTextContent();
-            System.out.println("Cart Id: " + cartId);
-            String buyerId = document.getElementsByTagName("buyerId").item(0).getTextContent();
-            System.out.println("Buyer Id : " + buyerId);
-            String productId = document.getElementsByTagName("productId").item(0).getTextContent();
-            System.out.println("Product Id : " + productId);
-            String quantity = document.getElementsByTagName("quantity").item(0).getTextContent();
-            System.out.println("Quantity : " + quantity);
+            String discountId = document.getElementsByTagName("discountId").item(0).getTextContent();
+            System.out.println("Discount Id: " + discountId);
+            String discountName = document.getElementsByTagName("discountName").item(0).getTextContent();
+            System.out.println("Discount Name: " + discountName);
+            String description = document.getElementsByTagName("description").item(0).getTextContent();
+            System.out.println("Description : " + description);
+            String discountPercent = document.getElementsByTagName("discountPercent").item(0).getTextContent();
+            System.out.println("Discount Percent : " + discountPercent);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
-

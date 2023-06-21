@@ -16,10 +16,6 @@ public class Category {
     public Category() {
     }
 
-    public Category(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
     public int getCategoryId() {
         return categoryId;
     }

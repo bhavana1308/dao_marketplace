@@ -1,15 +1,15 @@
-package org.solvd.com.dao.utils.xmlvalidate;
+package org.solvd.com.dao.utils;
 
 import org.w3c.dom.Document;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class CategoryXMLValidate {
+public class CartListXMLValidate {
 
     public static void main(String[] args) {
 
-        String xmlFilePath = "src/test/category.xml";
+        String xmlFilePath = "src/test/cartList.xml";
 
         boolean isValid = validateXMLSchema(xmlFilePath);
         System.out.println("XML validation result : " + isValid);
@@ -43,15 +43,18 @@ public class CategoryXMLValidate {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(xmlFilePath);
 
-            String categoryId = document.getElementsByTagName("categoryId").item(0).getTextContent();
-            System.out.println("Category Id: " + categoryId);
-            String categoryName = document.getElementsByTagName("categoryName").item(0).getTextContent();
-            System.out.println("Category Name: " + categoryName);
-            String description = document.getElementsByTagName("description").item(0).getTextContent();
-            System.out.println("Description : " + description);
+            String cartId = document.getElementsByTagName("cartId").item(0).getTextContent();
+            System.out.println("Cart Id: " + cartId);
+            String buyerId = document.getElementsByTagName("buyerId").item(0).getTextContent();
+            System.out.println("Buyer Id : " + buyerId);
+            String productId = document.getElementsByTagName("productId").item(0).getTextContent();
+            System.out.println("Product Id : " + productId);
+            String quantity = document.getElementsByTagName("quantity").item(0).getTextContent();
+            System.out.println("Quantity : " + quantity);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
+

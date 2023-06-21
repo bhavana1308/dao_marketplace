@@ -37,7 +37,7 @@ public class JaxBMain {
             buyers.getBuyersList().add(buyer1);
             buyers.getBuyersList().add(buyer2);
 
-            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/buyersList.xml");
+            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/buyersList.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(BuyersList.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -50,7 +50,7 @@ public class JaxBMain {
 
         // Buyer unmarshaller with list and date
         try {
-            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/buyersList.xml");
+            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/buyersList.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(BuyersList.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             BuyersList buyers = (BuyersList) jaxbUnmarshaller.unmarshal(file);
@@ -73,7 +73,7 @@ public class JaxBMain {
             cartList.setQuantity(10);
             cartList.setCreatedDate(new Date());
 
-            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/cartList.xml");
+            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/cartList.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(CartList.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -86,7 +86,7 @@ public class JaxBMain {
 
         //cart list unmarshaller
         try {
-            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/cartList.xml");
+            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/cartList.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(CartList.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             CartList cartList = (CartList) jaxbUnmarshaller.unmarshal(file);
@@ -105,7 +105,7 @@ public class JaxBMain {
             category.setDescription("kitchen items");
             category.setCreatedDate(new Date());
 
-            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/category.xml");
+            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/category.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(Category.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -118,7 +118,7 @@ public class JaxBMain {
 
         //category unmarshaller
         try {
-            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/category.xml");
+            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/category.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(Category.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             Category category = (Category) jaxbUnmarshaller.unmarshal(file);
@@ -151,7 +151,7 @@ public class JaxBMain {
             discountsList.getDiscountsList().add(discounts1);
             discountsList.getDiscountsList().add(discounts2);
 
-            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/discountsList.xml");
+            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/discountsList.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(DiscountsList.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -164,7 +164,7 @@ public class JaxBMain {
 
         //Discounts unmarshaller with list and date
         try {
-            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/discountsList.xml");
+            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/discountsList.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(DiscountsList.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             DiscountsList discountsList = (DiscountsList) jaxbUnmarshaller.unmarshal(file);
@@ -191,7 +191,7 @@ public class JaxBMain {
             products.setQuantityAvailable(20);
             products.setCreatedDate(new Date());
 
-            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/products.xml");
+            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/products.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(Products.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -204,7 +204,7 @@ public class JaxBMain {
 
         //products unmarshaller
         try {
-            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/products.xml");
+            File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/products.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(Products.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             Products products = (Products) jaxbUnmarshaller.unmarshal(file);
