@@ -1,0 +1,37 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="connection.properties"/>
+
+    <typeAliases>
+        <typeAlias alias = "Buyer" type = "org.solvd.com.dao.model.Buyer"/>
+        <typeAlias alias = "CartList" type = "org.solvd.com.dao.model.CartList"/>
+        <typeAlias alias = "Category" type = "org.solvd.com.dao.model.Category"/>
+        <typeAlias alias = "Discounts" type = "org.solvd.com.dao.model.Discounts"/>
+        <typeAlias alias = "Products" type = "org.solvd.com.dao.model.Products"/>
+    </typeAliases>
+
+    <environments default = "development">
+        <environment id = "development">
+            <transactionManager type = "JDBC"/>
+            <dataSource type = "POOLED">
+                <property name = "driver" value = "com.mysql.cj.jdbc.Driver"/>
+                <property name = "url" value = "${CONNECTION_URL}"/>
+                <property name = "username" value = "${USER}"/>
+                <property name = "password" value = "${PASS}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mappers/buyermapper.xml" />
+        <mapper resource="mappers/cartlistmapper.xml" />
+        <mapper resource="mappers/categorymapper.xml" />
+        <mapper resource="mappers/discountsmapper.xml" />
+        <mapper resource="mappers/productsmapper.xml" />
+    </mappers>
+
+</configuration>
