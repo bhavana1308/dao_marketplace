@@ -12,7 +12,4 @@ public interface BuyerMapper {
 
     int updateBuyer(Buyer buyer);
 
-    int deleteByBuyerId(int id);
-
-
 }

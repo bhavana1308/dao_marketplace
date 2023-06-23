@@ -1,7 +1,7 @@
 package org.solvd.com.dao.service;
 
 import org.solvd.com.dao.exception.DaoException;
-import org.solvd.com.dao.model.Products;
+import org.solvd.com.dao.model.Product;
 import org.solvd.com.dao.utils.AbstractDao;
 import org.solvd.com.dao.utils.ConnectionFactory;
 
@@ -9,57 +9,55 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDao extends AbstractDao<Products> {
+public class ProductDao extends AbstractDao<Product> {
 
-    private final String SELECT_BY_PRODUCT_NAME = "SELECT * FROM products WHERE productName = ?;";
+    private final String SELECT_BY_PRODUCT_NAME = "SELECT * FROM product WHERE productName = ?;";
 
-    private final String DELETE_QUERY = "DELETE FROM products WHERE productId = ?";
-
-    private final String GET_ALL_QUERY = "SELECT * FROM products";
+    private final String GET_ALL_QUERY = "SELECT * FROM product";
 
 
-    private Products getProductsFromResultSet(ResultSet resultSet) throws SQLException {
-        Products products = new Products();
-        products.setProductId(resultSet.getInt("productId"));
-        products.setProductName(resultSet.getString("productName"));
-        products.setPrice(resultSet.getDouble("price"));
-        products.setRating(resultSet.getInt("rating"));
-        products.setReviewCount(resultSet.getInt("reviewCount"));
-        products.setDescription(resultSet.getString("description"));
-        products.setQuantityAvailable(resultSet.getInt("quantityAvailable"));
-        return products;
+    private Product getProductsFromResultSet(ResultSet resultSet) throws SQLException {
+        Product product = new Product();
+        product.setProductId(resultSet.getInt("productId"));
+        product.setProductName(resultSet.getString("productName"));
+        product.setPrice(resultSet.getDouble("price"));
+        product.setRating(resultSet.getInt("rating"));
+        product.setReviewCount(resultSet.getInt("reviewCount"));
+        product.setDescription(resultSet.getString("description"));
+        product.setQuantityAvailable(resultSet.getInt("quantityAvailable"));
+        return product;
     }
 
-    public Products findByName(String productName) {
-        Products products = new Products();
+    public Product findByName(String productName) {
+        Product product = new Product();
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_BY_PRODUCT_NAME)) {
             statement.setString(1, productName);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                products = getProductsFromResultSet(resultSet);
+                product = getProductsFromResultSet(resultSet);
             } else {
                 throw new DaoException("Couldn't find a product with such ID!");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return products;
+        return product;
     }
 
     @Override
-    public Products findById(int id) {
+    public Product findById(int id) {
         return null;
     }
 
-    public List<Products> getAll() {
-        List<Products> products = new ArrayList<>();
+    public List<Product> getAll() {
+        List<Product> products = new ArrayList<>();
         try (Connection connection = ConnectionFactory.getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(GET_ALL_QUERY);
             while (resultSet.next()) {
-                Products products1 = getProductsFromResultSet(resultSet);
-                products.add(products1);
+                Product product1 = getProductsFromResultSet(resultSet);
+                products.add(product1);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -68,24 +66,18 @@ public class ProductDao extends AbstractDao<Products> {
     }
 
     @Override
-    public Products insert(Products entity) {
+    public Product insert(Product entity) {
         return entity;
     }
 
     @Override
-    public Products update(Products entity) {
+    public Product update(Product entity) {
         return entity;
     }
 
-    public void delete(Products products) {
-        try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(DELETE_QUERY)) {
-            statement.setInt(1, products.getProductId());
-            statement.execute("SET FOREIGN_KEY_CHECKS=0");
-            statement.executeUpdate();
-            statement.execute("SET FOREIGN_KEY_CHECKS=1");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void delete(Product entity) {
+
     }
+
 }

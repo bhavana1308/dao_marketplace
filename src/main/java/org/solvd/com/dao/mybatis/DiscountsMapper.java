@@ -1,17 +1,15 @@
 package org.solvd.com.dao.mybatis;
 
-import org.solvd.com.dao.model.Discounts;
+import org.solvd.com.dao.model.Discount;
 
 import java.util.List;
 
 public interface DiscountsMapper {
 
-    List<Discounts> getAllFromDiscounts();
+    List<Discount> getAllFromDiscounts();
 
-    int insertDiscounts(Discounts Discounts);
+    int insertDiscounts(Discount Discount);
 
-    int updateDiscounts(Discounts Discounts);
-
-    int deleteByDiscountsId(int id);
+    int updateDiscounts(Discount Discount);
 
 }

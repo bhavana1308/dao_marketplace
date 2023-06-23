@@ -133,23 +133,23 @@ public class JaxBMain {
         //Discounts marshaller with list and date
         try {
             DiscountsList discountsList = new DiscountsList();
-            discountsList.setDiscountsList(new ArrayList<Discounts>());
-            Discounts discounts1 = new Discounts();
-            discounts1.setDiscountId(4);
-            discounts1.setDiscountName("Labour day sale");
-            discounts1.setDescription("50 percent off on everything");
-            discounts1.setDiscountPercent(50);
-            discounts1.setCreatedDate(new Date());
+            discountsList.setDiscountsList(new ArrayList<Discount>());
+            Discount discount1 = new Discount();
+            discount1.setDiscountId(4);
+            discount1.setDiscountName("Labour day sale");
+            discount1.setDescription("50 percent off on everything");
+            discount1.setDiscountPercent(50);
+            discount1.setCreatedDate(new Date());
 
-            Discounts discounts2 = new Discounts();
-            discounts2.setDiscountId(5);
-            discounts2.setDiscountName("memorial day sale");
-            discounts2.setDescription("60 percent off on crockery");
-            discounts2.setDiscountPercent(60);
-            discounts2.setCreatedDate(new Date());
+            Discount discount2 = new Discount();
+            discount2.setDiscountId(5);
+            discount2.setDiscountName("memorial day sale");
+            discount2.setDescription("60 percent off on crockery");
+            discount2.setDiscountPercent(60);
+            discount2.setCreatedDate(new Date());
 
-            discountsList.getDiscountsList().add(discounts1);
-            discountsList.getDiscountsList().add(discounts2);
+            discountsList.getDiscountsList().add(discount1);
+            discountsList.getDiscountsList().add(discount2);
 
             File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/discountsList.xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(DiscountsList.class);
@@ -168,12 +168,12 @@ public class JaxBMain {
             JAXBContext jaxbContext = JAXBContext.newInstance(DiscountsList.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             DiscountsList discountsList = (DiscountsList) jaxbUnmarshaller.unmarshal(file);
-            for (Discounts discounts : discountsList.getDiscountsList()) {
-                System.out.println("Discount id : " + discounts.getDiscountId());
-                System.out.println("Discount Name : " + discounts.getDiscountName());
-                System.out.println("Discount Description : " + discounts.getDescription());
-                System.out.println("Discount percent : " + discounts.getDiscountPercent());
-                System.out.println("Created date : " + discounts.getCreatedDate());
+            for (Discount discount : discountsList.getDiscountsList()) {
+                System.out.println("Discount id : " + discount.getDiscountId());
+                System.out.println("Discount Name : " + discount.getDiscountName());
+                System.out.println("Discount Description : " + discount.getDescription());
+                System.out.println("Discount percent : " + discount.getDiscountPercent());
+                System.out.println("Created date : " + discount.getCreatedDate());
             }
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -181,22 +181,22 @@ public class JaxBMain {
 
         //products marshaller
         try {
-            Products products = new Products();
-            products.setProductId(4);
-            products.setProductName("Laptop");
-            products.setPrice(20.90);
-            products.setDescription("Electronic laptop");
-            products.setRating(4);
-            products.setReviewCount(200);
-            products.setQuantityAvailable(20);
-            products.setCreatedDate(new Date());
+            Product product = new Product();
+            product.setProductId(4);
+            product.setProductName("Laptop");
+            product.setPrice(20.90);
+            product.setDescription("Electronic laptop");
+            product.setRating(4);
+            product.setReviewCount(200);
+            product.setQuantityAvailable(20);
+            product.setCreatedDate(new Date());
 
             File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/products.xml");
-            JAXBContext jaxbContext = JAXBContext.newInstance(Products.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(Product.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshaller.marshal(products, file);
-            jaxbMarshaller.marshal(products, System.out);
+            jaxbMarshaller.marshal(product, file);
+            jaxbMarshaller.marshal(product, System.out);
         } catch (JAXBException e) {
             e.printStackTrace();
 
@@ -205,17 +205,17 @@ public class JaxBMain {
         //products unmarshaller
         try {
             File file = new File("/Users/bhavanareddy/IdeaProjects/onlinemarketplace/src/main/java/org/solvd/com/dao/utils/jaxbxml/products.xml");
-            JAXBContext jaxbContext = JAXBContext.newInstance(Products.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(Product.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            Products products = (Products) jaxbUnmarshaller.unmarshal(file);
-            System.out.println("Product id : " + products.getProductId());
-            System.out.println("product name : " + products.getProductName());
-            System.out.println("product Description : " + products.getDescription());
-            System.out.println("product price : " + products.getPrice());
-            System.out.println("product rating : " + products.getRating());
-            System.out.println("product reviewCount : " + products.getReviewCount());
-            System.out.println("Quantity available : " + products.getQuantityAvailable());
-            System.out.println("Created date : " + products.getCreatedDate());
+            Product product = (Product) jaxbUnmarshaller.unmarshal(file);
+            System.out.println("Product id : " + product.getProductId());
+            System.out.println("product name : " + product.getProductName());
+            System.out.println("product Description : " + product.getDescription());
+            System.out.println("product price : " + product.getPrice());
+            System.out.println("product rating : " + product.getRating());
+            System.out.println("product reviewCount : " + product.getReviewCount());
+            System.out.println("Quantity available : " + product.getQuantityAvailable());
+            System.out.println("Created date : " + product.getCreatedDate());
         } catch (JAXBException e) {
             e.printStackTrace();
         }

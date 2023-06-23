@@ -1,40 +1,40 @@
 package org.solvd.com.dao.service;
 
-import org.solvd.com.dao.model.Discounts;
+import org.solvd.com.dao.model.Discount;
 import org.solvd.com.dao.utils.GenericDao;
 
 import java.util.List;
 
-public class DiscountService implements Service<Discounts> {
+public class DiscountService implements Service<Discount> {
 
-    private final GenericDao<Discounts> discountsDao;
+    private final GenericDao<Discount> discountDao;
 
-    public DiscountService(GenericDao<Discounts> discountsDao) {
-        this.discountsDao = discountsDao;
+    public DiscountService(GenericDao<Discount> discountDao) {
+        this.discountDao = discountDao;
     }
 
     @Override
-    public Discounts insert(Discounts entity) {
-        return discountsDao.insert(entity);
+    public Discount insert(Discount entity) {
+        return discountDao.insert(entity);
     }
 
     @Override
-    public Discounts findById(int id) {
-        return discountsDao.findById(id);
+    public Discount findById(int id) {
+        return discountDao.findById(id);
     }
 
     @Override
-    public Discounts update(Discounts entity) {
-        return discountsDao.update(entity);
+    public Discount update(Discount entity) {
+        return discountDao.update(entity);
     }
 
     @Override
-    public List<Discounts> getAll() {
-        return discountsDao.getAll();
+    public List<Discount> getAll() {
+        return discountDao.getAll();
     }
 
     @Override
-    public void delete(Discounts entity) {
-        discountsDao.delete(entity);
+    public void delete(Discount entity) {
+        discountDao.delete(entity);
     }
 }

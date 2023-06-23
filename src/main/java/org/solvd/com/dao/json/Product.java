@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 import java.util.Date;
 
-@JsonRootName(value = "Products")
-public class Products {
+@JsonRootName(value = "Product")
+public class Product {
 
     @JsonProperty("productId")
     private int productId;
@@ -34,7 +34,7 @@ public class Products {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date createdDate;
 
-    public Products(int productId, String productName, double price, int rating, int reviewCount, String description, int quantityAvailable) {
+    public Product(int productId, String productName, double price, int rating, int reviewCount, String description, int quantityAvailable) {
         this.productId = productId;
         this.productName = productName;
         this.price = price;
@@ -44,11 +44,11 @@ public class Products {
         this.quantityAvailable = quantityAvailable;
     }
 
-    public Products(int productId) {
+    public Product(int productId) {
         this.productId = productId;
     }
 
-    public Products() {
+    public Product() {
     }
 
     public int getProductId() {
@@ -117,7 +117,7 @@ public class Products {
 
     @Override
     public String toString() {
-        return "Products{" +
+        return "Product{" +
                 "\n" + " productId=" + productId +
                 " productName='" + productName + "\n" +
                 " price=" + price + "\n" +

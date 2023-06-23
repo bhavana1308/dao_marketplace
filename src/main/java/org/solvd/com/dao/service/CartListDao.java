@@ -38,9 +38,7 @@ public class CartListDao extends AbstractDao<CartList> {
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_QUERY)) {
             statement.setInt(1, cartList.getCartId());
-            statement.execute("SET FOREIGN_KEY_CHECKS=0");
             statement.executeUpdate();
-            statement.execute("SET FOREIGN_KEY_CHECKS=1");
         } catch (SQLException e) {
             e.printStackTrace();
         }

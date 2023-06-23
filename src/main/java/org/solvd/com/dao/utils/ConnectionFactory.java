@@ -10,25 +10,26 @@ import java.util.Properties;
 
 public class ConnectionFactory {
 
-    private static String CONNECTION_URL;
-    private static String USER;
-    private static String PASS;
+    public static Connection getConnection() throws SQLException {
 
-    static {
         try (InputStream input = new FileInputStream("/src/main/resources/connection.properties")) {
             Properties properties = new Properties();
             properties.load(input);
 
-            CONNECTION_URL = properties.getProperty("CONNECTION_URL");
-            USER = properties.getProperty("USER");
-            PASS = properties.getProperty("PASS");
+            final String CONNECTION_URL = properties.getProperty("CONNECTION_URL");
+            final String USER = properties.getProperty("USER");
+            final String PASS = properties.getProperty("PASS");
+
+            return DriverManager.getConnection(CONNECTION_URL, USER, PASS);
+
+
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Could not load properties file.");
+
         }
     }
-
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(CONNECTION_URL, USER, PASS);
-    }
 }
+
+
+
 

@@ -14,13 +14,13 @@ import java.util.List;
 public class DiscountsList {
 
     @XmlElement(name = "discount")
-    private List<Discounts> discountsList = new ArrayList<>();
+    private List<Discount> discountsList = new ArrayList<>();
 
-    public List<Discounts> getDiscountsList() {
+    public List<Discount> getDiscountsList() {
         return discountsList;
     }
 
-    public void setDiscountsList(List<Discounts> discountsList) {
+    public void setDiscountsList(List<Discount> discountsList) {
         this.discountsList = discountsList;
     }
 }

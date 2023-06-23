@@ -5,20 +5,17 @@
 
 <mapper namespace="org.solvd.com.dao.mybatis.DiscountsMapper">
 
-    <insert id="insertDiscounts" parameterType="Discounts">
-        INSERT INTO discounts (discountName,description,discountPercent)
+    <insert id="insertDiscounts" parameterType="Discount">
+        INSERT INTO discount (discountName,description,discountPercent)
         VALUES (#{discountName}, #{description}, #{discountPercent});
     </insert>
 
-    <update id="updateDiscounts" parameterType="Discounts">
-        UPDATE discounts SET discountName = #{discountName}, description = #{description}, discountPercent=#{discountPercent} WHERE discountId = #{discountId};
+    <update id="updateDiscounts" parameterType="Discount">
+        UPDATE discount SET discountName = #{discountName}, description = #{description}, discountPercent=#{discountPercent} WHERE discountId = #{discountId};
     </update>
 
-    <delete id="deleteByDiscountsId" parameterType="int">
-        DELETE from Discounts WHERE discountId = #{discountId};
-    </delete>
 
-    <resultMap id="resultDiscounts" type="Discounts" autoMapping="false">
+    <resultMap id="resultDiscounts" type="Discount" autoMapping="false">
         <result property="discountId" column="discountId"/>
         <result property="discountName" column="discountName"/>
         <result property="description" column="description"/>
@@ -26,10 +23,10 @@
     </resultMap>
 
     <select id="getAllFromDiscounts" resultMap="resultDiscounts">
-        SELECT * FROM Discounts;
+        SELECT * FROM Discount;
     </select>
 
     <select id="getByDiscountsId" parameterType="int" resultMap="resultDiscounts">
-        SELECT * FROM Discounts WHERE discountId = #{discountId};
+        SELECT * FROM Discount WHERE discountId = #{discountId};
     </select>
 </mapper>

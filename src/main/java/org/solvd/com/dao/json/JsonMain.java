@@ -82,23 +82,23 @@ public class JsonMain {
         }
 
         DiscountsList discountsList = new DiscountsList();
-        discountsList.setDiscountsList(new ArrayList<Discounts>());
-        Discounts discounts1 = new Discounts();
-        discounts1.setDiscountId(4);
-        discounts1.setDiscountName("Labour day sale");
-        discounts1.setDescription("50 percent off on everything");
-        discounts1.setDiscountPercent(50);
-        discounts1.setCreatedDate(new Date());
+        discountsList.setDiscountsList(new ArrayList<Discount>());
+        Discount discount1 = new Discount();
+        discount1.setDiscountId(4);
+        discount1.setDiscountName("Labour day sale");
+        discount1.setDescription("50 percent off on everything");
+        discount1.setDiscountPercent(50);
+        discount1.setCreatedDate(new Date());
 
-        Discounts discounts2 = new Discounts();
-        discounts2.setDiscountId(5);
-        discounts2.setDiscountName("memorial day sale");
-        discounts2.setDescription("60 percent off on crockery");
-        discounts2.setDiscountPercent(60);
-        discounts2.setCreatedDate(new Date());
+        Discount discount2 = new Discount();
+        discount2.setDiscountId(5);
+        discount2.setDiscountName("memorial day sale");
+        discount2.setDescription("60 percent off on crockery");
+        discount2.setDiscountPercent(60);
+        discount2.setCreatedDate(new Date());
 
-        discountsList.getDiscountsList().add(discounts1);
-        discountsList.getDiscountsList().add(discounts2);
+        discountsList.getDiscountsList().add(discount1);
+        discountsList.getDiscountsList().add(discount2);
 
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -113,23 +113,23 @@ public class JsonMain {
             e.printStackTrace();
         }
 
-        Products products = new Products();
-        products.setProductId(4);
-        products.setProductName("Laptop");
-        products.setPrice(20.90);
-        products.setDescription("Electronic laptop");
-        products.setRating(4);
-        products.setReviewCount(200);
-        products.setQuantityAvailable(20);
-        products.setCreatedDate(new Date());
+        Product product = new Product();
+        product.setProductId(4);
+        product.setProductName("Laptop");
+        product.setPrice(20.90);
+        product.setDescription("Electronic laptop");
+        product.setRating(4);
+        product.setReviewCount(200);
+        product.setQuantityAvailable(20);
+        product.setCreatedDate(new Date());
 
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
-            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(products);
+            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(product);
             System.out.println(json);
             objectMapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
-            Products deserializedProducts = objectMapper.readValue(json, Products.class);
+            Product deserializedProducts = objectMapper.readValue(json, Product.class);
             System.out.println("Deserialized Products :" + deserializedProducts);
         } catch (Exception e) {
             e.printStackTrace();

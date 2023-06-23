@@ -6,7 +6,7 @@
         <fName>Gracie</fName>
         <lName>Hailine</lName>
         <password>123456</password>
-        <createdDate>2023-06-18T14:26:52.587-05:00</createdDate>
+        <createdDate>2023-06-23T09:15:23.126-05:00</createdDate>
     </buyer>
     <buyer>
         <buyerId>5</buyerId>
@@ -14,6 +14,6 @@
         <fName>Myka</fName>
         <lName>Nyroo</lName>
         <password>123789</password>
-        <createdDate>2023-06-18T14:26:52.587-05:00</createdDate>
+        <createdDate>2023-06-23T09:15:23.126-05:00</createdDate>
     </buyer>
 </buyers>

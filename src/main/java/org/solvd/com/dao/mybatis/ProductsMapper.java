@@ -1,16 +1,14 @@
 package org.solvd.com.dao.mybatis;
 
 
-import org.solvd.com.dao.model.Products;
+import org.solvd.com.dao.model.Product;
 
 import java.util.List;
 
 public interface ProductsMapper {
 
-    Products getByProductName(String productName);
+    Product getByProductName(String productName);
 
-    List<Products> getAllFromProducts();
-
-    int deleteByProductId(int id);
+    List<Product> getAllFromProducts();
 
 }
