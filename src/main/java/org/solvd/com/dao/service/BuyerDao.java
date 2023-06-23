@@ -14,8 +14,6 @@ public class BuyerDao extends AbstractDao<Buyer> {
 
     private final String UPDATE_QUERY = "UPDATE buyer SET email=?, fName = ?, lName = ?, password=? WHERE buyerId = ?;";
 
-    private final String DELETE_QUERY = " DELETE FROM buyer WHERE buyerId = ? ;";
-
     private final String GET_ALL_QUERY = "SELECT * FROM buyer";
 
     private Buyer getBuyerFromResultSet(ResultSet resultSet) throws SQLException {
@@ -62,16 +60,9 @@ public class BuyerDao extends AbstractDao<Buyer> {
         return buyer;
     }
 
-    public void delete(Buyer buyer) {
-        try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(DELETE_QUERY)) {
-            statement.setInt(1, buyer.getBuyerId());
-            statement.execute("SET FOREIGN_KEY_CHECKS=0");
-            statement.executeUpdate();
-            statement.execute("SET FOREIGN_KEY_CHECKS=1");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void delete(Buyer entity) {
+
     }
 
     public List<Buyer> getAll() {

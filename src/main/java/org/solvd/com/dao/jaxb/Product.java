@@ -1,16 +1,41 @@
-package org.solvd.com.dao.model;
+package org.solvd.com.dao.jaxb;
 
-public class Products {
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
+import java.util.Date;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Product {
+
+    @XmlElement
     private int productId;
+
+    @XmlElement
     private String productName;
+
+    @XmlElement
     private double price;
+
+    @XmlElement
     private int rating;
+
+    @XmlElement
     private int reviewCount;
+
+    @XmlElement
     private String description;
+
+    @XmlElement
     private int quantityAvailable;
 
-    public Products(int productId, String productName, double price, int rating, int reviewCount, String description, int quantityAvailable) {
+    @XmlElement
+    private Date createdDate;
+
+    public Product(int productId, String productName, double price, int rating, int reviewCount, String description, int quantityAvailable) {
         this.productId = productId;
         this.productName = productName;
         this.price = price;
@@ -20,11 +45,11 @@ public class Products {
         this.quantityAvailable = quantityAvailable;
     }
 
-    public Products(int productId) {
+    public Product(int productId) {
         this.productId = productId;
     }
 
-    public Products() {
+    public Product() {
     }
 
     public int getProductId() {
@@ -83,9 +108,17 @@ public class Products {
         this.quantityAvailable = quantityAvailable;
     }
 
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
     @Override
     public String toString() {
-        return "Products{" +
+        return "Product{" +
                 "productId=" + productId +
                 ", productName='" + productName + '\'' +
                 ", price=" + price +

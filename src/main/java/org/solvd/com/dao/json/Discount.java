@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 import java.util.Date;
 
-@JsonRootName(value = "Discounts")
-public class Discounts {
+@JsonRootName(value = "Discount")
+public class Discount {
 
     @JsonProperty("discountId")
     private int discountId;
@@ -25,18 +25,18 @@ public class Discounts {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date createdDate;
 
-    public Discounts(int discountId, String discountName, String description, int discountPercent) {
+    public Discount(int discountId, String discountName, String description, int discountPercent) {
         this.discountId = discountId;
         this.discountName = discountName;
         this.description = description;
         this.discountPercent = discountPercent;
     }
 
-    public Discounts(int discountId) {
+    public Discount(int discountId) {
         this.discountId = discountId;
     }
 
-    public Discounts() {
+    public Discount() {
     }
 
     public int getDiscountId() {
@@ -81,7 +81,7 @@ public class Discounts {
 
     @Override
     public String toString() {
-        return "Discounts{" +
+        return "Discount{" +
                 "\n" + " discountId=" + discountId + "\n" +
                 " discountName='" + discountName + "\n" +
                 " description='" + description + "\n" +

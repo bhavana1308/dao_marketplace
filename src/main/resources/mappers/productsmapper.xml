@@ -5,11 +5,7 @@
 
 <mapper namespace="org.solvd.com.dao.mybatis.ProductsMapper">
 
-    <delete id="deleteByProductId" parameterType="int">
-        DELETE from Products WHERE productId = #{productId};
-    </delete>
-
-    <resultMap id="resultProducts" type="Products" autoMapping="false">
+    <resultMap id="resultProducts" type="Product" autoMapping="false">
         <result property="productId" column="productId"/>
         <result property="productName" column="productName"/>
         <result property="price" column="price"/>
@@ -20,11 +16,11 @@
     </resultMap>
 
     <select id="getAllFromProducts" resultMap="resultProducts">
-        SELECT * FROM Products;
+        SELECT * FROM Product;
     </select>
 
     <select id="getByProductName" resultMap="resultProducts">
-       SELECT * FROM products WHERE productName = #{productName};
+       SELECT * FROM product WHERE productName = #{productName};
     </select>
 
 </mapper>

@@ -10,8 +10,8 @@
         <typeAlias alias = "Buyer" type = "org.solvd.com.dao.model.Buyer"/>
         <typeAlias alias = "CartList" type = "org.solvd.com.dao.model.CartList"/>
         <typeAlias alias = "Category" type = "org.solvd.com.dao.model.Category"/>
-        <typeAlias alias = "Discounts" type = "org.solvd.com.dao.model.Discounts"/>
-        <typeAlias alias = "Products" type = "org.solvd.com.dao.model.Products"/>
+        <typeAlias alias = "Discount" type = "org.solvd.com.dao.model.Discount"/>
+        <typeAlias alias = "Product" type = "org.solvd.com.dao.model.Product"/>
     </typeAliases>
 
     <environments default = "development">

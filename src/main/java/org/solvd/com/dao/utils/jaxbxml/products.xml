@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<products>
+<product>
     <productId>4</productId>
     <productName>Laptop</productName>
     <price>20.9</price>
@@ -7,5 +7,5 @@
     <reviewCount>200</reviewCount>
     <description>Electronic laptop</description>
     <quantityAvailable>20</quantityAvailable>
-    <createdDate>2023-06-18T14:26:53.005-05:00</createdDate>
-</products>
+    <createdDate>2023-06-23T09:15:23.647-05:00</createdDate>
+</product>

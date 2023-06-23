@@ -15,13 +15,6 @@
         #{buyerId};
     </update>
 
-    <select id="setForeignkey" parameterType="int">
-         SET FOREIGN_KEY_CHECKS=0;
-    </select>
-
-    <delete id="deleteByBuyerId" parameterType="int">
-        DELETE from Buyer WHERE buyerId = #{buyerId};
-    </delete>
 
     <resultMap id="resultBuyer" type="Buyer" autoMapping="false">
         <result property="buyerId" column="buyerId"/>
