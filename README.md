@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to the Java Online Marketplace project! This comprehensive project covers various aspects of Java programming, database design, and software architecture. Below, you'll find information about the project structure, completed tasks, and additional resources.
+This Java project, as part of Java learning homework from my mentor, revolves around a online market place, covering a range of topics such as Java programming, database design, MyBatis framework and software architecture. 
 
 ## Project Structure
 
